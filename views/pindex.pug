@@ -826,12 +826,30 @@ html
 
 script.
     $( document ).ready(function() {
-        $( "form" ).on( "submit", function( event ) {
-          event.preventDefault();
-          $.post('/postform', $( this ).serialize())
-          console.log( $( this ).serialize() );
+
+     $( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        var formdata = $( this ).serialize();
+
+
+        $.ajax({ 
+           url: '/postform',
+           type: 'POST',
+           cache: false, 
+           data: formdata, 
+           success: function(data){
+              alert('Success!')
+           },
+           error: function(jqXHR, textStatus, err){
+               alert('text status '+textStatus+', err '+err)
+           }
+        })
+
+        console.log( $( this ).serialize() );
+
+         });
         });
-    });
+
 //- function wordCount( val ){
 //-     var wom = val.match(/\S+/g);
 //-     return {

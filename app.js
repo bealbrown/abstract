@@ -20,7 +20,8 @@ app.get('/', function (req, res) {
 })
 
 app.post('/postform', function(req , res){
-   console.log(req.query);
+   console.log(req.body);
+   res.redirect('/');
 });
 
 app.get('/test', function(req,res) {
