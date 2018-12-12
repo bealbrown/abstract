@@ -1,4 +1,6 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+
 const app = express()
 const port = 3000
 const mysql = require('mysql')
@@ -8,6 +10,9 @@ const mysql = require('mysql')
 //   password : 's3kreee7',
 //   database : 'my_db'
 // });
+
+app.use(bodyParser.urlencoded({extended: true}));
+
 app.set('view engine', 'pug')
 
 app.get('/', function (req, res) {
@@ -15,7 +20,7 @@ app.get('/', function (req, res) {
 })
 
 app.post('/postform', function(req , res){
-   console.log(req.body.formData);
+   console.log(req.query);
 });
 
 app.get('/test', function(req,res) {
