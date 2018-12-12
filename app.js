@@ -19,7 +19,7 @@ app.post('/postform', function(req , res){
 });
 
 app.get('/test', function(req,res) {
-	console.log("test");
+        console.log("test");
 })
 
 
