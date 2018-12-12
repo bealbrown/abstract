@@ -828,6 +828,7 @@ script.
     $( document ).ready(function() {
         $( "form" ).on( "submit", function( event ) {
           event.preventDefault();
+          $.post('/postform', $( this ).serialize())
           console.log( $( this ).serialize() );
         });
     });

@@ -8,9 +8,11 @@ const mysql = require('mysql')
 //   password : 's3kreee7',
 //   database : 'my_db'
 // });
+app.set('view engine', 'pug')
 
-app.get('/', (req, res) => res.send('Hello World!'))
-
+app.get('/', function (req, res) {
+  res.render('pindex.pug');
+})
 
 app.post('/postform', function(req , res){
    console.log(req.body.formData);
@@ -19,6 +21,8 @@ app.post('/postform', function(req , res){
 app.get('/test', function(req,res) {
 	console.log("test");
 })
+
+
 
 
 // connection.connect()
