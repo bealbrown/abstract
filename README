@@ -1,3 +1,9 @@
 
+#install pm2
+	npm i pm2 -g
 
-npm i pm2 -g
+# install mysql
+	sudo apt update
+    sudo apt install mysql-server
+    sudo mysql_secure_installation
+    

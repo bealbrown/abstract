@@ -2,14 +2,23 @@ const express = require('express')
 const app = express()
 const port = 3000
 const mysql = require('mysql')
-const connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'dbuser',
-  password : 's3kreee7',
-  database : 'my_db'
-});
+// const connection = mysql.createConnection({
+//   host     : 'localhost',
+//   user     : 'dbuser',
+//   password : 's3kreee7',
+//   database : 'my_db'
+// });
 
 app.get('/', (req, res) => res.send('Hello World!'))
+
+
+app.post('/postform', function(req , res){
+   console.log(req.body.formData);
+});
+
+app.get('/test', function(req,res) {
+	console.log("test");
+}
 
 
 // connection.connect()
