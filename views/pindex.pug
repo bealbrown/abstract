@@ -27,7 +27,7 @@ html
                 margin-bottom: 5px !important;
             }
             .formInfo {
-                width: 580px;
+                width: 750px;
                 float: left;
                 /*border: 2px solid black;*/
             }
@@ -47,6 +47,23 @@ html
             .push-right {
                 margin-left: 20px;
             }
+            button {
+                margin-left: 5px !important;
+                margin-right: 5px !important;
+            }
+            .authorBtnBox {
+                float:right;
+                margin-top: 10px;
+            }
+            .fullwidth {
+                width: 100%;
+                min-height: 50px;
+                display: block;
+                margin-top: 10px;
+            }
+            .blocktext {
+                padding-bottom: 30px;
+            }
 
         script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
         // Latest compiled and minified CSS
@@ -59,11 +76,10 @@ html
     body
         .main-container
             form
-
                 .form-group.shadow-sm
                     .formInfo
                         label.formInfoLabel
-                            | 1. Please indicate the student status of the presenting author. 
+                            h4 1. Please indicate the student status of the presenting author. 
                             br
                             span.helpText  
                             br
@@ -81,7 +97,7 @@ html
                 .form-group.shadow-sm
                     .formInfo
                         label.formInfoLabel
-                            | 2. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
+                            h4 2. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
                             br
                             span
                                 | To be considered, you must be the primary author and presenter of the paper which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. 
@@ -98,9 +114,9 @@ html
                 .form-group.shadow-sm
                     .formInfo
                         label.formInfoLabel
-                            | 3. Would the presenter like to be considered for a student or post-doc travel award? 
-                            br
-                            span
+                            h4 3. Would the presenter like to be considered for a student or post-doc travel award? 
+                            div.blocktext
+                                p
                                 | To be considered, you must: 1) present a talk or a poster, and 2) be a student member of the AOS, which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. Post-doc travel award applicants must be a member of the AOS, be currently employed as a postdoctoral researcher, and be ineligible for student travel awards (i.e.., graduated before May 1, 2018). 
                                 a(href='', style='text-decoration:underline;', target='_blank') Click here
                                 |  for more information. 
@@ -114,712 +130,352 @@ html
                             option  No 
                 
                 .form-group.shadow-sm
-                    .formInfo
-                        label.formInfoLabel
+                    div.fullwidth
+                        h4 4. Enter the names and contact info of the authors of this presentation.
+                        div.blocktext
                             p
-                                | 4. Enter the names and contact info of the authors of this presentation.
-                                br
-                                | For all authors, please provide their name as it should appear in the conference program and abstract book. Please be aware that up to 12 authors per presentation may be included in the list of Abstracts. However, only the first six for each presentation will be included in the conference program book due to space limitations. Take that into consideration when identifying your list of co-authors and their chronological order (ie, co-authors 7-12 will not likely be listed in the program book at all!).
-                                br
-                                br
-                                |  Please enter the authors' first, middle, and last names in the format that you want them to show up in the conference program book. If an author wants to be listed by their middle name, put their first initial only (e.g. “R.”) in the box for First Name and their middle name, the name that they go by, in the box for Middle Name (e.g., “Michael”). Also, if an author does not have a middle name, enter NONE in that box. To ensure consistency in the final conference program, please follow any initials with a period (e.g., Nancy K. Smith).
-                                br
+                            | For all authors, please provide their name as it should appear in the conference program and abstract book. Please be aware that up to 12 authors per presentation may be included in the list of Abstracts. However, only the first six for each presentation will be included in the conference program book due to space limitations. Take that into consideration when identifying your list of co-authors and their chronological order (ie, co-authors 7-12 will not likely be listed in the program book at all!).
+                            br
+                            br
+                            |  Please enter the authors' first, middle, and last names in the format that you want them to show up in the conference program book. If an author wants to be listed by their middle name, put their first initial only (e.g. “R.”) in the box for First Name and their middle name, the name that they go by, in the box for Middle Name (e.g., “Michael”). Also, if an author does not have a middle name, enter NONE in that box. To ensure consistency in the final conference program, please follow any initials with a period (e.g., Nancy K. Smith).
                     .rightInput
                         span#Label34
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel
+                                h4 5. Which author is presenting? 
+                        .rightInput
+                            select.form-control(name='RadComboBox35_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  1st Author 
+                                option  2nd Author 
+                                option  3rd Author 
+                                option  4th Author 
+                                option  5th Author 
+                                option  6th Author 
+                                option  7th Author 
+                                option  8th Author 
+                                option  9th Author 
+                                option  10th Author 
+                                option  11th Author 
+                                option  12th Author 
+
+                    table(id="authorTable")
+                        tr
+                            th(style="width: 20px;") #
+                            th First Name
+                            th Middle or Initial
+                            th Last Name
+                            th Primary Institution
+                            th Phone
+                            th Email
+                        tr
+                            td(style="font-size: 16px") 1
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td
+                                input.inputText.form-control(type='text')
+                    div.authorBtnBox
+                        button(id="addAuthorBtn", class="btn btn-primary") Add Author
+                        button(id="deleteAuthorBtn", class="btn btn-secondary") Delete Author
+
                 .form-group.shadow-sm
-                    .formInfo
-                        label.formInfoLabel
-                            | 5. Which author is presenting? 
-                            br
-                            span.helpText  
-                            br
-                    .rightInput
-                        select.form-control(name='RadComboBox35_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  1st Author 
-                            option  2nd Author 
-                            option  3rd Author 
-                            option  4th Author 
-                            option  5th Author 
-                            option  6th Author 
-                            option  7th Author 
-                            option  8th Author 
-                            option  9th Author 
-                            option  10th Author 
-                            option  11th Author 
-                            option  12th Author 
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Author - First Name 
-                    .rightInput
-                        input#TextBox36.inputText.form-control(name='TextBox36', type='text')
-                        span#rfv_TextBox36
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Author - Middle Name or Initial 
-                    .rightInput
-                        input#TextBox37.inputText.form-control(name='TextBox37', type='text')
-                        span#rfv_TextBox37
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Author - Last Name 
-                    .rightInput
-                        input#TextBox38.inputText.form-control(name='TextBox38', type='text')
-                        span#rfv_TextBox38
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Author - Primary Institution 
-                    .rightInput
-                        input#TextBox39.inputText.form-control(name='TextBox39', type='text')
-                        span#rfv_TextBox39
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Author - Phone 
-                    .rightInput
-                        input#TextBox40.inputText.form-control(name='TextBox40', type='text')
-                        span#rfv_TextBox40
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Author - Email 
-                    .rightInput
-                        input#TextBox41.inputText.form-control(name='TextBox41', type='text')
-                        span#rfv_TextBox41
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Author - First Name
-                    .rightInput
-                        input#TextBox44.inputText.form-control(name='TextBox44', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox45.inputText.form-control(name='TextBox45', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Author - Last Name
-                    .rightInput
-                        input#TextBox46.inputText.form-control(name='TextBox46', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Author - Primary Institution
-                    .rightInput
-                        input#TextBox47.inputText.form-control(name='TextBox47', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Author - Phone
-                    .rightInput
-                        input#TextBox48.inputText.form-control(name='TextBox48', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Author - Email
-                    .rightInput
-                        input#TextBox49.inputText.form-control(name='TextBox49', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Author - First Name
-                    .rightInput
-                        input#TextBox52.inputText.form-control(name='TextBox52', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox53.inputText.form-control(name='TextBox53', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Author - Last Name
-                    .rightInput
-                        input#TextBox54.inputText.form-control(name='TextBox54', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Author - Primary Institution
-                    .rightInput
-                        input#TextBox55.inputText.form-control(name='TextBox55', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Author - Phone
-                    .rightInput
-                        input#TextBox56.inputText.form-control(name='TextBox56', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Author - Email
-                    .rightInput
-                        input#TextBox57.inputText.form-control(name='TextBox57', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Author - First Name
-                    .rightInput
-                        input#TextBox60.inputText.form-control(name='TextBox60', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox61.inputText.form-control(name='TextBox61', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Author - Last Name
-                    .rightInput
-                        input#TextBox62.inputText.form-control(name='TextBox62', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Author - Primary Institution
-                    .rightInput
-                        input#TextBox63.inputText.form-control(name='TextBox63', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Author - Phone
-                    .rightInput
-                        input#TextBox64.inputText.form-control(name='TextBox64', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Author - Email
-                    .rightInput
-                        input#TextBox65.inputText.form-control(name='TextBox65', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 5th Author - First Name
-                    .rightInput
-                        input#TextBox68.inputText.form-control(name='TextBox68', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 5th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox69.inputText.form-control(name='TextBox69', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 5th Author - Last Name
-                    .rightInput
-                        input#TextBox70.inputText.form-control(name='TextBox70', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 5th Author - Primary Institution
-                    .rightInput
-                        input#TextBox71.inputText.form-control(name='TextBox71', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 5th Author - Phone
-                    .rightInput
-                        input#TextBox72.inputText.form-control(name='TextBox72', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 5th Author - Email
-                    .rightInput
-                        input#TextBox73.inputText.form-control(name='TextBox73', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 6th Author - First Name
-                    .rightInput
-                        input#TextBox76.inputText.form-control(name='TextBox76', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 6th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox77.inputText.form-control(name='TextBox77', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 6th Author - Last Name
-                    .rightInput
-                        input#TextBox78.inputText.form-control(name='TextBox78', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 6th Author - Primary Institution
-                    .rightInput
-                        input#TextBox79.inputText.form-control(name='TextBox79', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 6th Author - Phone
-                    .rightInput
-                        input#TextBox80.inputText.form-control(name='TextBox80', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 6th Author - Email
-                    .rightInput
-                        input#TextBox81.inputText.form-control(name='TextBox81', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 7th Author - First Name
-                    .rightInput
-                        input#TextBox84.inputText.form-control(name='TextBox84', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 7th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox85.inputText.form-control(name='TextBox85', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 7th Author - Last Name
-                    .rightInput
-                        input#TextBox86.inputText.form-control(name='TextBox86', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 7th Author - Primary Institution
-                    .rightInput
-                        input#TextBox87.inputText.form-control(name='TextBox87', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 7th Author - Phone
-                    .rightInput
-                        input#TextBox88.inputText.form-control(name='TextBox88', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 7th Author - Email
-                    .rightInput
-                        input#TextBox89.inputText.form-control(name='TextBox89', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 8th Author - First Name
-                    .rightInput
-                        input#TextBox92.inputText.form-control(name='TextBox92', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 8th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox93.inputText.form-control(name='TextBox93', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 8th Author - Last Name
-                    .rightInput
-                        input#TextBox94.inputText.form-control(name='TextBox94', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 8th Author - Primary Institution
-                    .rightInput
-                        input#TextBox95.inputText.form-control(name='TextBox95', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 8th Author - Phone
-                    .rightInput
-                        input#TextBox96.inputText.form-control(name='TextBox96', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 8th Author - Email
-                    .rightInput
-                        input#TextBox97.inputText.form-control(name='TextBox97', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 9th Author - First Name
-                    .rightInput
-                        input#TextBox100.inputText.form-control(name='TextBox100', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 9th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox101.inputText.form-control(name='TextBox101', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 9th Author - Last Name
-                    .rightInput
-                        input#TextBox102.inputText.form-control(name='TextBox102', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 9th Author - Primary Institution
-                    .rightInput
-                        input#TextBox103.inputText.form-control(name='TextBox103', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 9th Author - Phone
-                    .rightInput
-                        input#TextBox104.inputText.form-control(name='TextBox104', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 9th Author - Email
-                    .rightInput
-                        input#TextBox105.inputText.form-control(name='TextBox105', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 10th Author - First Name
-                    .rightInput
-                        input#TextBox108.inputText.form-control(name='TextBox108', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 10th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox109.inputText.form-control(name='TextBox109', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 10th Author - Last Name
-                    .rightInput
-                        input#TextBox110.inputText.form-control(name='TextBox110', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 10th Author - Primary Institution
-                    .rightInput
-                        input#TextBox111.inputText.form-control(name='TextBox111', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 10th Author - Phone
-                    .rightInput
-                        input#TextBox112.inputText.form-control(name='TextBox112', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 10th Author - Email
-                    .rightInput
-                        input#TextBox113.inputText.form-control(name='TextBox113', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 11th Author - First Name
-                    .rightInput
-                        input#TextBox116.inputText.form-control(name='TextBox116', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 11th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox117.inputText.form-control(name='TextBox117', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 11th Author - Last Name
-                    .rightInput
-                        input#TextBox118.inputText.form-control(name='TextBox118', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 11th Author - Primary Institution
-                    .rightInput
-                        input#TextBox119.inputText.form-control(name='TextBox119', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 11th Author - Phone
-                    .rightInput
-                        input#TextBox120.inputText.form-control(name='TextBox120', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 11th Author - Email
-                    .rightInput
-                        input#TextBox121.inputText.form-control(name='TextBox121', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 12th Author - First Name
-                    .rightInput
-                        input#TextBox124.inputText.form-control(name='TextBox124', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 12th Author - Middle Name or Initial
-                    .rightInput
-                        input#TextBox125.inputText.form-control(name='TextBox125', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 12th Author - Last Name
-                    .rightInput
-                        input#TextBox126.inputText.form-control(name='TextBox126', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 12th Author - Primary Institution
-                    .rightInput
-                        input#TextBox127.inputText.form-control(name='TextBox127', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 12th Author - Phone
-                    .rightInput
-                        input#TextBox128.inputText.form-control(name='TextBox128', type='text')
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 12th Author - Email
-                    .rightInput
-                        input#TextBox129.inputText.form-control(name='TextBox129', type='text')
-                .form-group.shadow-sm
-                    .formInfo
-                        | 6. Title of presentation (125-character limit)
-                        br
-                        | Please enter the title as it should appear in the program and abstract book. It is recommended that you avoid putting scientific names in the title unless it is critical. Titles should not exceed 125 characters. Please be aware that the field box below does 
-                        u not
-                        |  automatically limit your title to the appropriate character length. The Scientific Program Committee may take editorial liberties with your title, particularly if it exceeds the character limits, to ensure it fits within the space constraints of the program and abstract book. 
-                        br
-                        p
-                            textarea#TextBox133.inputText.form-control(name='TextBox133')
-                            span#rfv_TextBox133
-                .form-group.shadow-sm
-                    .formInfo
-                        | 7. Abstract (250-word limit)
-                        br
-                        | Please be aware that the field box below does 
-                        u not
-                        |  automatically limit your abstract to the appropriate word length. It is recommended that you use an external word processing program (e.g., Microsoft Word) to ensure that your abstract conforms to the maximum word requirements. 
-                        br
-                        p
-                            textarea#TextBox135.inputText.form-control(name='TextBox135')
-                            span#rfv_TextBox135
+                    div.fullwidth
+                        h4 6. Title of presentation (125-character limit)
+                        p 
+                        | Please enter the title as it should appear in the program and abstract book. It is recommended that you avoid putting scientific names in the title unless it is critical. Titles should not exceed 125 characters. The Scientific Program Committee may take editorial liberties with your title to ensure it fits within the space constraints of the program and abstract book. 
+
+                    textarea#TextBox133.inputText.form-control(name='TextBox133')
 
                 .form-group.shadow-sm
                     .formInfo
-                        label.formInfoLabel
-                            span(style='')
-                                | 8. Please indicate your preferences for the three presentation formats (15 min talk, 5 min lightning, and poster).
-                    .rightInput
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Choice 
-                    .rightInput
-                        select.form-control(name='RadComboBox139_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  15 minute talk 
-                            option  5 minute lightning 
-                            option  Poster 
-                            option  No preference 
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Choice 
-                    .rightInput
-                        select.form-control(name='RadComboBox140_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  15 minute talk 
-                            option  5 minute lightning 
-                            option  Poster 
-                            option  No preference 
-                            option  I do not want another format 
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel
-                            | 3rd Choice 
-                            br
-                            span.helpText  
-                            br
-                    .rightInput
-                        select.form-control(name='RadComboBox141_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  15 minute talk 
-                            option  5 minute lightning 
-                            option  Poster 
-                            option  No preference 
-                            option  I do not want another format 
+                        h4 7. Abstract (250-word limit)
+                        textarea#TextBox135.inputText.form-control(name='TextBox135')
+
                 .form-group.shadow-sm
-                    .formInfo
-                        label.formInfoLabel
-                            | 9. Please indicate your top 4 choices of topical areas in which your presentation best fits.
-                            br
+                    div.fullwidth
+                        h4 8. Please indicate your preferences for the three presentation formats
+                        p (15 min talk, 5 min lightning, and poster)
+                    div.fullwidth
+                        .formInfo
+                            p 1st Choice 
+                        .rightInput
+                            select.form-control(name='RadComboBox139_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  15 minute talk 
+                                option  5 minute lightning 
+                                option  Poster 
+                                option  No preference 
+
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel 2nd Choice 
+                        .rightInput
+                            select.form-control(name='RadComboBox140_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  15 minute talk 
+                                option  5 minute lightning 
+                                option  Poster 
+                                option  No preference 
+                                option  I do not want another format 
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel
+                                | 3rd Choice 
+                                br
+                                span.helpText  
+                                br
+                        .rightInput
+                            select.form-control(name='RadComboBox141_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  15 minute talk 
+                                option  5 minute lightning 
+                                option  Poster 
+                                option  No preference 
+                                option  I do not want another format 
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 9. Please indicate your top 4 choices of topical areas in which your presentation best fits.
+                        div.blocktext
+                            p
                             | Possible subject areas include the following: Abundance, occupancy, trends; Annual cycle; Behavior; Biogeography; Birds & agriculture; Breeding biology; Breeding Bird Survey (BBS); Brood parasitism; Citizen science/science communication; Climate; Community ecology; Conservation; Development & growth; Diseases/parasites; Ecosystems; Ecotoxicology; Emerging tools; Endocrinology & hormones; Evolution; Evolutionary ecology; Foraging/food habits; General Ecology; Genomics; Habitat change/relationships; Human dimensions/coupled systems; Landscape Ecology; Life history; Management/policy; Mating systems; Metabolic ecology; Migration & Stopover; Models and methods; Molecular ecology; Morphology/molt; Movements/dispersal; Parental care; Phylogenetics; Phylogeography; Physiology; Policy, outreach & education; Pollution/pesticides; Population biology/dynamics; Sexual selection; Songs/vocalizations; Systematics/taxonomy; Tropical ecology; Urban ecology
-                            br
                     .rightInput
                         span#Label143
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 1st Choice 
-                    .rightInput
-                        select.form-control#ListBox145(name='ListBox145')
-                            option(value="", disabled, selected) Select
-                            option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
-                            option(value='Annual cycle') Annual cycle
-                            option(value='Behavior') Behavior
-                            option(value='Biogeography') Biogeography
-                            option(value='Birds & agriculture') Birds & agriculture
-                            option(value='Breeding biology') Breeding biology
-                            option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
-                            option(value='Brood parasitism') Brood parasitism
-                            option(value='Citizen science/science communication') Citizen science/science communication
-                            option(value='Climate') Climate
-                            option(value='Community ecology') Community ecology
-                            option(value='Conservation') Conservation
-                            option(value='Development & growth') Development & growth
-                            option(value='Diseases/parasites') Diseases/parasites
-                            option(value='Ecosystems') Ecosystems
-                            option(value='Ecotoxicology') Ecotoxicology
-                            option(value='Emerging tools') Emerging tools
-                            option(value='Endocrinology & hormones') Endocrinology & hormones
-                            option(value='Evolution') Evolution
-                            option(value='Evolutionary ecology') Evolutionary ecology
-                            option(value='Foraging/food habits') Foraging/food habits
-                            option(value='General ecology') General ecology
-                            option(value='Genomics') Genomics
-                            option(value='Habitat change/relationships') Habitat change/relationships
-                            option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
-                            option(value='Landscape ecology') Landscape ecology
-                            option(value='Life history') Life history
-                            option(value='Management/policy') Management/policy
-                            option(value='Mating systems') Mating systems
-                            option(value='Metabolic ecology') Metabolic ecology
-                            option(value='Migration & stopover') Migration & stopover
-                            option(value='Models & methods') Models & methods
-                            option(value='Molecular ecology') Molecular ecology
-                            option(value='Morphology/molt') Morphology/molt
-                            option(value='Movements/dispersal') Movements/dispersal
-                            option(value='Parental care') Parental care
-                            option(value='Phylogenetics') Phylogenetics
-                            option(value='Phylogeography') Phylogeography
-                            option(value='Physiology') Physiology
-                            option(value='Policy, outreach & education') Policy, outreach & education
-                            option(value='Pollution/pesticides') Pollution/pesticides
-                            option(value='Population biology/dynamics') Population biology/dynamics
-                            option(value='Sexual selection') Sexual selection
-                            option(value='Songs/vocalizations') Songs/vocalizations
-                            option(value='Systematics/taxonomy') Systematics/taxonomy
-                            option(value='Tropical ecology') Tropical ecology
-                            option(value='Urban ecology') Urban ecology
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 2nd Choice 
-                    .rightInput
-                        select.form-control#ListBox146(name='ListBox146')
-                            option(value="", disabled, selected) Select
-                            option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
-                            option(value='Annual cycle') Annual cycle
-                            option(value='Behavior') Behavior
-                            option(value='Biogeography') Biogeography
-                            option(value='Birds & agriculture') Birds & agriculture
-                            option(value='Breeding biology') Breeding biology
-                            option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
-                            option(value='Brood parasitism') Brood parasitism
-                            option(value='Citizen science/science communication') Citizen science/science communication
-                            option(value='Climate') Climate
-                            option(value='Community ecology') Community ecology
-                            option(value='Conservation') Conservation
-                            option(value='Development & growth') Development & growth
-                            option(value='Diseases/parasites') Diseases/parasites
-                            option(value='Ecosystems') Ecosystems
-                            option(value='Ecotoxicology') Ecotoxicology
-                            option(value='Emerging tools') Emerging tools
-                            option(value='Endocrinology & hormones') Endocrinology & hormones
-                            option(value='Evolution') Evolution
-                            option(value='Evolutionary ecology') Evolutionary ecology
-                            option(value='Foraging/food habits') Foraging/food habits
-                            option(value='General ecology') General ecology
-                            option(value='Genomics') Genomics
-                            option(value='Habitat change/relationships') Habitat change/relationships
-                            option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
-                            option(value='Landscape ecology') Landscape ecology
-                            option(value='Life history') Life history
-                            option(value='Management/policy') Management/policy
-                            option(value='Mating systems') Mating systems
-                            option(value='Metabolic ecology') Metabolic ecology
-                            option(value='Migration & stopover') Migration & stopover
-                            option(value='Models & methods') Models & methods
-                            option(value='Molecular ecology') Molecular ecology
-                            option(value='Morphology/molt') Morphology/molt
-                            option(value='Movements/dispersal') Movements/dispersal
-                            option(value='Parental care') Parental care
-                            option(value='Phylogenetics') Phylogenetics
-                            option(value='Phylogeography') Phylogeography
-                            option(value='Physiology') Physiology
-                            option(value='Policy, outreach & education') Policy, outreach & education
-                            option(value='Pollution/pesticides') Pollution/pesticides
-                            option(value='Population biology/dynamics') Population biology/dynamics
-                            option(value='Sexual selection') Sexual selection
-                            option(value='Songs/vocalizations') Songs/vocalizations
-                            option(value='Systematics/taxonomy') Systematics/taxonomy
-                            option(value='Tropical ecology') Tropical ecology
-                            option(value='Urban ecology') Urban ecology
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 3rd Choice 
-                    .rightInput
-                        select.form-control#ListBox147(name='ListBox147')
-                            option(value="", disabled, selected) Select
-                            option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
-                            option(value='Annual cycle') Annual cycle
-                            option(value='Behavior') Behavior
-                            option(value='Biogeography') Biogeography
-                            option(value='Birds & agriculture') Birds & agriculture
-                            option(value='Breeding biology') Breeding biology
-                            option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
-                            option(value='Brood parasitism') Brood parasitism
-                            option(value='Citizen science/science communication') Citizen science/science communication
-                            option(value='Climate') Climate
-                            option(value='Community ecology') Community ecology
-                            option(value='Conservation') Conservation
-                            option(value='Development & growth') Development & growth
-                            option(value='Diseases/parasites') Diseases/parasites
-                            option(value='Ecosystems') Ecosystems
-                            option(value='Ecotoxicology') Ecotoxicology
-                            option(value='Emerging tools') Emerging tools
-                            option(value='Endocrinology & hormones') Endocrinology & hormones
-                            option(value='Evolution') Evolution
-                            option(value='Evolutionary ecology') Evolutionary ecology
-                            option(value='Foraging/food habits') Foraging/food habits
-                            option(value='General ecology') General ecology
-                            option(value='Genomics') Genomics
-                            option(value='Habitat change/relationships') Habitat change/relationships
-                            option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
-                            option(value='Landscape ecology') Landscape ecology
-                            option(value='Life history') Life history
-                            option(value='Management/policy') Management/policy
-                            option(value='Mating systems') Mating systems
-                            option(value='Metabolic ecology') Metabolic ecology
-                            option(value='Migration & stopover') Migration & stopover
-                            option(value='Models & methods') Models & methods
-                            option(value='Molecular ecology') Molecular ecology
-                            option(value='Morphology/molt') Morphology/molt
-                            option(value='Movements/dispersal') Movements/dispersal
-                            option(value='Parental care') Parental care
-                            option(value='Phylogenetics') Phylogenetics
-                            option(value='Phylogeography') Phylogeography
-                            option(value='Physiology') Physiology
-                            option(value='Policy, outreach & education') Policy, outreach & education
-                            option(value='Pollution/pesticides') Pollution/pesticides
-                            option(value='Population biology/dynamics') Population biology/dynamics
-                            option(value='Sexual selection') Sexual selection
-                            option(value='Songs/vocalizations') Songs/vocalizations
-                            option(value='Systematics/taxonomy') Systematics/taxonomy
-                            option(value='Tropical ecology') Tropical ecology
-                            option(value='Urban ecology') Urban ecology
-                .form-group.shadow-sm.push-right
-                    .formInfo
-                        label.formInfoLabel 4th Choice 
-                    .rightInput
-                        select.form-control#ListBox148(name='ListBox148')
-                            option(value="", disabled, selected) Select
-                            option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
-                            option(value='Annual cycle') Annual cycle
-                            option(value='Behavior') Behavior
-                            option(value='Biogeography') Biogeography
-                            option(value='Birds & agriculture') Birds & agriculture
-                            option(value='Breeding biology') Breeding biology
-                            option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
-                            option(value='Brood parasitism') Brood parasitism
-                            option(value='Citizen science/science communication') Citizen science/science communication
-                            option(value='Climate') Climate
-                            option(value='Community ecology') Community ecology
-                            option(value='Conservation') Conservation
-                            option(value='Development & growth') Development & growth
-                            option(value='Diseases/parasites') Diseases/parasites
-                            option(value='Ecosystems') Ecosystems
-                            option(value='Ecotoxicology') Ecotoxicology
-                            option(value='Emerging tools') Emerging tools
-                            option(value='Endocrinology & hormones') Endocrinology & hormones
-                            option(value='Evolution') Evolution
-                            option(value='Evolutionary ecology') Evolutionary ecology
-                            option(value='Foraging/food habits') Foraging/food habits
-                            option(value='General ecology') General ecology
-                            option(value='Genomics') Genomics
-                            option(value='Habitat change/relationships') Habitat change/relationships
-                            option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
-                            option(value='Landscape ecology') Landscape ecology
-                            option(value='Life history') Life history
-                            option(value='Management/policy') Management/policy
-                            option(value='Mating systems') Mating systems
-                            option(value='Metabolic ecology') Metabolic ecology
-                            option(value='Migration & stopover') Migration & stopover
-                            option(value='Models & methods') Models & methods
-                            option(value='Molecular ecology') Molecular ecology
-                            option(value='Morphology/molt') Morphology/molt
-                            option(value='Movements/dispersal') Movements/dispersal
-                            option(value='Parental care') Parental care
-                            option(value='Phylogenetics') Phylogenetics
-                            option(value='Phylogeography') Phylogeography
-                            option(value='Physiology') Physiology
-                            option(value='Policy, outreach & education') Policy, outreach & education
-                            option(value='Pollution/pesticides') Pollution/pesticides
-                            option(value='Population biology/dynamics') Population biology/dynamics
-                            option(value='Sexual selection') Sexual selection
-                            option(value='Songs/vocalizations') Songs/vocalizations
-                            option(value='Systematics/taxonomy') Systematics/taxonomy
-                            option(value='Tropical ecology') Tropical ecology
-                            option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel 1st Choice 
+                        .rightInput
+                            select.form-control#ListBox145(name='ListBox145')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel 2nd Choice 
+                        .rightInput
+                            select.form-control#ListBox146(name='ListBox146')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel 3rd Choice 
+                        .rightInput
+                            select.form-control#ListBox147(name='ListBox147')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            label.formInfoLabel 4th Choice 
+                        .rightInput
+                            select.form-control#ListBox148(name='ListBox148')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
                 .form-group.shadow-sm
-                    .formInfo
-                        | 10. Special needs for your presentation (e.g., I will require wheelchair assistance).
-                        p
-                            textarea#TextBox150.inputText.form-control(name='TextBox150')
+                    h4 10. Special needs for your presentation
+                    p (e.g., I will require wheelchair assistance).
+                    textarea#TextBox150.inputText.form-control(name='TextBox150')
                 .form-group.shadow-sm
-                    .formInfo
-                        | 11. Notes to the Scientific Program Committee.
-                        p
-                            textarea#TextBox152.inputText.form-control(name='TextBox152')
+                    h4 11. Notes to the Scientific Program Committee.
+                    textarea#TextBox152.inputText.form-control(name='TextBox152')
                 .form-group.shadow-sm
-                    .formInfo
-                        label.formInfoLabel 12. Are you willing to chair your session or a different session? 
-                    .rightInput
-                        select.form-control(name='RadComboBox154_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  Yes, my session only 
-                            option  Yes, another session only 
-                            option  Yes, either my session or a different session 
-                            option  No, I do not wish to chair a session 
+                    h4 12. Are you willing to chair your session or a different session? 
+                    select.form-control(name='RadComboBox154_DropDown')
+                        option(value="", disabled, selected) Select
+                        option  Yes, my session only 
+                        option  Yes, another session only 
+                        option  Yes, either my session or a different session 
+                        option  No, I do not wish to chair a session 
                 .form-group
                     button(type="submit" class="btn btn-primary") Submit
 
@@ -827,28 +483,53 @@ html
 script.
     $( document ).ready(function() {
 
-     $( "form" ).on( "submit", function( event ) {
+    $('#addAuthorBtn').on('click', function(event) {
+
+        event.preventDefault();
+
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+
+        $trNew = $trLast.clone();
+
+        $trNew.find('td:first').html(parseInt(prevnum) + 1);
+        $trLast.after($trNew);
+
+        $('#authorTable tr:last').find('input').val('');
+
+
+
+    });
+
+    $('#deleteAuthorBtn').on('click', function(event) {
+
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last').remove();
+
+    });
+
+    $( "form" ).on( "submit", function( event ) {
         event.preventDefault();
         var formdata = $( this ).serialize();
 
 
-        $.ajax({ 
-           url: '/postform',
-           type: 'POST',
-           cache: false, 
-           data: formdata, 
-           success: function(data){
-              alert('Success!')
-           },
-           error: function(jqXHR, textStatus, err){
-               alert('text status '+textStatus+', err '+err)
-           }
-        })
+    $.ajax({ 
+       url: '/postform',
+       type: 'POST',
+       cache: false, 
+       data: formdata, 
+       success: function(data){
+          alert('Success!')
+       },
+       error: function(jqXHR, textStatus, err){
+           alert('text status '+textStatus+', err '+err)
+       }
+    })
 
-        console.log( $( this ).serialize() );
+    console.log( $( this ).serialize() );
 
-         });
-        });
+     });
+    });
 
 //- function wordCount( val ){
 //-     var wom = val.match(/\S+/g);
