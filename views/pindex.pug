@@ -526,21 +526,21 @@ script.
         };
     }
 
-    $('.wordLimit').keydown(function () {
+    $('.wordLimit').on('keydown change', function () {
 
         var v = wordCount( $(this).val() );
-        console.log(v.words);
 
         if (v.words > 250) {
           var trimmed = $(this).val().split(/\s+/, 250).join(" ");
           $(this).val(trimmed + " ");
+          v.words = 250;
         }
 
         $(this).next('.wordLimitDisplay').html("Words: "+ v.words);
 
     });
 
-    $('.charLimit').keydown(function () {
+    $('.charLimit').on('keyup keydown change', function () {
 
         $(this).val($(this).val().substring(0, 125));
         var v = wordCount( $(this).val() );
