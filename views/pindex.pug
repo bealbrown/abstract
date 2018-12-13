@@ -4,124 +4,9 @@ html
         title Abstract
         meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
         style(type='text/css').
-            body {
-                background: #fff !important;
-                margin: 0;
-            }
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            p,
-            input,
-            span {
-                font-family: 'Open Sans' !important;
-                color: #606060 !important;
-            }
 
-            #main-container h4 {
-                font-size: 20px !important;
-            }
-            #main-container p {
-                font-size: 15px;
-            }
-            #main-container a {
-                color: #5EA7B1 !important;
-            }
-            .rightInput {
-                width: 300px;
-                float: right;
-            }
-            select {
-                max-width: 250px;
-                height: 35px;
-            }
-            .form-group {
-                width: 100%;
-                margin-top: 20px;
-                /* min-height: 5px; */
-                overflow: auto;
-                background: #f4f4f4;
-                /* border: 2px solid black; */
-                padding: 15px;
-                border-radius: 2px;
-                margin-bottom: 5px !important;
-            }
-            .formInfo {
-                width: 750px;
-                float: left;
-                /*border: 2px solid black;*/
-            }
-            #main-container {
-                width: 65%;
-                margin: 0 auto;
-            }
-            .formInfoLabel {
-            }
-            .inputText {
-                width: 100%;
-            }
-            .centered {
-                text-align: center;
-                width: 100%;
-            }
-            .push-right {
-                margin-left: 20px;
-            }
-            button {
-                margin-left: 5px !important;
-                margin-right: 5px !important;
-            }
-            .authorBtnBox {
-                float:right;
-                margin-top: 10px;
-            }
-            .fullwidth {
-                width: 100%;
-                min-height: 50px;
-                display: block;
-                margin-top: 10px;
-            }
-            .blocktext {
-                padding-bottom: 30px;
-            }
-            textarea {
-                min-height: 100px;
-            }
-            th {
-                color: #606060;
-            }
-            .charLimitDisplay, .wordLimitDisplay {
-                font-style: italic;
-                color: #606060 !important;
-            }
-            @font-face {
-                font-family: "FontAwesome";
-                font-weight: normal;
-                font-style: normal;
-                src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
-                src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
-            }
-            @font-face {
-              font-family: 'Open Sans';
-              font-style: normal;
-              font-weight: 400;
-              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFW50bbck.woff2) format('woff2');
-              unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-            }
-            /* latin */
-            @font-face {
-              font-family: 'Open Sans';
-              font-style: normal;
-              font-weight: 400;
-              src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
-              unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-            }
-            /* open-sans-regular - latin */
-            
         style(type='text/css')
-            //- include boostrap.css
+            include css/maincss.css
 
         script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
         link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
@@ -135,64 +20,21 @@ html
         div#main-container
             center
                 h1(style="letter-spacing: 2px;") Abstract Submission Form
+            br
+            h4 Welcome!  Please submit your abstract for the 8th Western Hemisphere Shorebird Group meeting, to be held in Panama City, Panama, October 24-28, 2019. Abstracts are due by 5 April 2019.
+            br
             form
                 .form-group.shadow-sm
-                    .formInfo
-                        h4 1. Please indicate the student status of the presenting author. 
-                        br
-                        span.helpText  
-                        br
-                    .rightInput
-                        select.form-control(name='RadComboBox5_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  Pre-college 
-                            option  Undergraduate student 
-                            option  Masters student 
-                            option  Doctoral student 
-                            option  Postdoctoral 
-                            option  Individual between degree-seeking programs 
-                            option  Presenting author is NOT a student or a postdoc 
-                
-                .form-group.shadow-sm
-                    .formInfo
-                        h4 2. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
-                        br
-                        p To be considered, you must be the primary author and presenter of the paper which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. 
-                        a(href='', target='_blank') Click here for more information. 
-                        strong(style='font-family: arial, helvetica, sans-serif;') Please note that this is a required question. Non-students should select NO.
-                        br
-                    .rightInput
-                        select.form-control(name='RadComboBox11_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  Yes 
-                            option  No 
-                
-                .form-group.shadow-sm
-                    .formInfo
-                        h4 3. Would the presenter like to be considered for a student or post-doc travel award? 
-                        div.blocktext
-                            p To be considered, you must: 1) present a talk or a poster, and 2) be a student member of the AOS, which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. Post-doc travel award applicants must be a member of the AOS, be currently employed as a postdoctoral researcher, and be ineligible for student travel awards (i.e.., graduated before May 1, 2018). 
-                            a(href='', target='_blank') Click here for more information. 
-                            strong Please note that this is a required question. In-eligible applicants should select NO.
-                            br
-                    .rightInput
-                        select.form-control(name='RadComboBox18_DropDown')
-                            option(value="", disabled, selected) Select
-                            option  Yes 
-                            option  No 
-                
-                .form-group.shadow-sm
                     div.fullwidth
-                        h4 4. Enter the names and contact info of the authors of this presentation.
+                        h4 1. Enter the names and contact info of the authors of this presentation.
                         div.blocktext
-                            p For all authors, please provide their name as it should appear in the conference program and abstract book. Please be aware that up to 12 authors per presentation may be included in the list of Abstracts. However, only the first six for each presentation will be included in the conference program book due to space limitations. Take that into consideration when identifying your list of co-authors and their chronological order (ie, co-authors 7-12 will not likely be listed in the program book at all!).
+                            p For all authors, please provide their name as it should appear in the conference program and abstract book. 
                             br
-                            p Please enter the authors' first, middle, and last names in the format that you want them to show up in the conference program book. If an author wants to be listed by their middle name, put their first initial only (e.g. “R.”) in the box for First Name and their middle name, the name that they go by, in the box for Middle Name (e.g., “Michael”). Also, if an author does not have a middle name, enter NONE in that box. To ensure consistency in the final conference program, please follow any initials with a period (e.g., Nancy K. Smith).
                     .rightInput
                         span#Label34
                     div.fullwidth
                         .formInfo
-                            h4 5. Which author is presenting? 
+                            h4 Which author is presenting? 
                         .rightInput
                             select.form-control(name='RadComboBox35_DropDown')
                                 option(value="", disabled, selected) Select
@@ -235,13 +77,11 @@ html
                     div.authorBtnBox
                         button(id="addAuthorBtn", class="btn btn-primary") Add Author
                         button(id="deleteAuthorBtn", class="btn btn-secondary") Delete Author
-
                 .form-group.shadow-sm
                     div.fullwidth
-                        h4 6. Title of presentation (125-character limit)
-                        p Please enter the title as it should appear in the program and abstract book. It is recommended that you avoid putting scientific names in the title unless it is critical. Titles should not exceed 125 characters. The Scientific Program Committee may take editorial liberties with your title to ensure it fits within the space constraints of the program and abstract book. 
-                        br
-                        p Please enter both English and Spanish titles if you can; otherwise we will translate them for you.
+                        h4 2. Title of presentation (125-character limit)
+                        p Please enter the title as it should appear in the program and abstract book. Titles may not exceed 125 characters. 
+                        p Please enter both English and Spanish titles if you can; otherwise we will translate them for you. If you wish to submit an abstract in a language other than Spanish or English, please email the Scientific Program Committee chair, Stephen Brown, at sbrown@manomet.org.
                     br
                     h5 English
                     input.charLimit.inputText.form-control(type="text", name='englishTitleInput')
@@ -253,7 +93,6 @@ html
 
                 .form-group.shadow-sm
                     h4 7. Abstract (250-word limit)
-                    br
                     p Please enter both English and Spanish abstracts if you can; otherwise we will translate them for you.
                     h5 English
                     textarea.wordLimit.inputText.form-control(name='englishAbstractInput', style="width: 100% ")
@@ -265,7 +104,7 @@ html
 
                 .form-group.shadow-sm
                     div.fullwidth
-                        h4 8. Please indicate your preferences for the three presentation formats
+                        h4 3. Please indicate your preferences for the three presentation formats
                         p (15 min talk, 5 min lightning, and poster)
                     div.fullwidth
                         .formInfo
@@ -305,7 +144,7 @@ html
                                 option  I do not want another format 
                 .form-group.shadow-sm
                     div.fullwidth
-                        h4 9. Please indicate your top 4 choices of topical areas in which your presentation best fits.
+                        h4 4. Please indicate your top 4 choices of topical areas in which your presentation best fits.
                         //- div.blocktext
                         //-     p
                         //-     | Possible subject areas include the following: Abundance, occupancy, trends; Annual cycle; Behavior; Biogeography; Birds & agriculture; Breeding biology; Breeding Bird Survey (BBS); Brood parasitism; Citizen science/science communication; Climate; Community ecology; Conservation; Development & growth; Diseases/parasites; Ecosystems; Ecotoxicology; Emerging tools; Endocrinology & hormones; Evolution; Evolutionary ecology; Foraging/food habits; General Ecology; Genomics; Habitat change/relationships; Human dimensions/coupled systems; Landscape Ecology; Life history; Management/policy; Mating systems; Metabolic ecology; Migration & Stopover; Models and methods; Molecular ecology; Morphology/molt; Movements/dispersal; Parental care; Phylogenetics; Phylogeography; Physiology; Policy, outreach & education; Pollution/pesticides; Population biology/dynamics; Sexual selection; Songs/vocalizations; Systematics/taxonomy; Tropical ecology; Urban ecology
@@ -522,14 +361,52 @@ html
                                 option(value='Tropical ecology') Tropical ecology
                                 option(value='Urban ecology') Urban ecology
                 .form-group.shadow-sm
-                    h4 10. Special needs for your presentation
+                    .formInfo
+                        h4 5. Please indicate the student status of the presenting author. 
+                    .rightInput
+                        select.form-control(name='RadComboBox5_DropDown')
+                            option(value="", disabled, selected) Select
+                            option  Pre-college 
+                            option  Undergraduate student 
+                            option  Masters student 
+                            option  Doctoral student 
+                            option  Postdoctoral 
+                            option  Individual between degree-seeking programs 
+                            option  Presenting author is NOT a student or a postdoc 
+                
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 6. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
+                        p To be considered, you must be the primary author and presenter of the paper which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. 
+                        strong(style='font-family: arial, helvetica, sans-serif;') Please note that this is a required question. Non-students should select NO.
+                        br
+                    .rightInput
+                        select.form-control(name='RadComboBox11_DropDown')
+                            option(value="", disabled, selected) Select
+                            option  Yes 
+                            option  No 
+                
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 7. Would the presenter like to be considered for a student or post-doc travel award? 
+                        div.blocktext
+                            p To be considered, you must present a talk or a poster, and be a student, which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs, or a Latin American professional.
+                            strong Please note that this is a required question. In-eligible applicants should select NO.
+                            br
+                    .rightInput
+                        select.form-control(name='RadComboBox18_DropDown')
+                            option(value="", disabled, selected) Select
+                            option  Yes 
+                            option  No 
+                .form-group.shadow-sm
+                    h4 8. Please note if you have any special needs for your presentation
                     p (e.g., I will require wheelchair assistance).
                     textarea#TextBox150.inputText.form-control(name='TextBox150')
                 .form-group.shadow-sm
-                    h4 11. Notes to the Scientific Program Committee.
+                    h4 9. Please enter any notes to the Scientific Program Committee.
                     textarea#TextBox152.inputText.form-control(name='TextBox152')
                 .form-group.shadow-sm
-                    h4 12. Are you willing to chair your session or a different session? 
+                    h4 10. Are you willing to chair your session or a different session? 
                     select.form-control(name='RadComboBox154_DropDown')
                         option(value="", disabled, selected) Select
                         option  Yes, my session only 
@@ -541,6 +418,7 @@ html
 
 
 script.
+
     $( document ).ready(function() {
 
     $('#addAuthorBtn').on('click', function(event) {
@@ -589,31 +467,6 @@ script.
         $(this).next('.charLimitDisplay').html("Characters: "+ v.characters);
 
     });
-
-    //- abstractInput.addEventListener("input", function(){
-
-    //-     var v = wordCount( this.value );
-    //-     console.log(v.words);
-
-    //-     if (v.words > 250) {
-    //-       var trimmed = this.value.split(/\s+/, 250).join(" ");
-    //-       abstractInput.value = (trimmed + " ");
-    //-     }
-
-    //-     abstractWordCount.innerHTML = ("Words: "+ v.words);
-
-    //- }, false);
-
-
-    //- titleInput.addEventListener("input", function(){
-        
-
-    //-     titleInput.value = titleInput.value.substring(0, 125);
-    //-     var v = wordCount( this.value );
-
-    //-     titleCharCount.innerHTML = ("Characters: "+ v.characters);
-
-    //- }, false);
 
     // Form Submission
     $( "form" ).on( "submit", function( event ) {

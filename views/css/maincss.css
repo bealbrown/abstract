@@ -1,0 +1,115 @@
+body {
+    background: #fff !important;
+    margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+input,
+span {
+    font-family: 'Open Sans' !important;
+    color: #606060 !important;
+}
+
+#main-container h4 {
+    font-size: 20px !important;
+}
+#main-container p {
+    font-size: 15px;
+}
+#main-container a {
+    color: #5EA7B1 !important;
+}
+.rightInput {
+    width: 300px;
+    float: right;
+}
+select {
+    max-width: 250px;
+    height: 35px;
+}
+.form-group {
+    width: 100%;
+    margin-top: 20px;
+    /* min-height: 5px; */
+    overflow: auto;
+    background: #f4f4f4;
+    /* border: 2px solid black; */
+    padding: 15px;
+    border-radius: 2px;
+    margin-bottom: 5px !important;
+}
+.formInfo {
+    width: 750px;
+    float: left;
+    /*border: 2px solid black;*/
+}
+#main-container {
+    width: 65%;
+    margin: 0 auto;
+}
+.formInfoLabel {
+}
+.inputText {
+    width: 100%;
+}
+.centered {
+    text-align: center;
+    width: 100%;
+}
+.push-right {
+    margin-left: 20px;
+}
+button {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+.authorBtnBox {
+    float:right;
+    margin-top: 10px;
+}
+.fullwidth {
+    width: 100%;
+    min-height: 50px;
+    display: block;
+    margin-top: 10px;
+}
+.blocktext {
+    padding-bottom: 30px;
+}
+textarea {
+    min-height: 100px;
+}
+th {
+    color: #606060;
+}
+.charLimitDisplay, .wordLimitDisplay {
+    font-style: italic;
+    color: #606060 !important;
+}
+@font-face {
+    font-family: "FontAwesome";
+    font-weight: normal;
+    font-style: normal;
+    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFW50bbck.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'), url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* open-sans-regular - latin */
