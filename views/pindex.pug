@@ -64,6 +64,12 @@ html
             .blocktext {
                 padding-bottom: 30px;
             }
+            textarea {
+                min-height: 100px;
+            }
+            .charLimitDisplay, .wordLimitDisplay {
+                font-style: italic;
+            }
 
         script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
         // Latest compiled and minified CSS
@@ -192,13 +198,25 @@ html
                         h4 6. Title of presentation (125-character limit)
                         p 
                         | Please enter the title as it should appear in the program and abstract book. It is recommended that you avoid putting scientific names in the title unless it is critical. Titles should not exceed 125 characters. The Scientific Program Committee may take editorial liberties with your title to ensure it fits within the space constraints of the program and abstract book. 
-
-                    textarea#TextBox133.inputText.form-control(name='TextBox133')
+                    br
+                    h5 English
+                    input.charLimit.inputText.form-control(type="text", name='englishTitleInput')
+                    div.charLimitDisplay
+                    br
+                    h5 Spanish
+                    input.charLimit.inputText.form-control(type="text", name='spanishTitleInput')
+                    div.charLimitDisplay
 
                 .form-group.shadow-sm
-                    .formInfo
-                        h4 7. Abstract (250-word limit)
-                        textarea#TextBox135.inputText.form-control(name='TextBox135')
+                    h4 7. Abstract (250-word limit)
+                    br
+                    h5 English
+                    textarea.wordLimit.inputText.form-control(name='englishAbstractInput', style="width: 100% ")
+                    div.wordLimitDisplay
+                    br
+                    h5 Spanish
+                    textarea.wordLimit.inputText.form-control(name='spanishAbstractInput', style="width: 100% ")
+                    div.wordLimitDisplay
 
                 .form-group.shadow-sm
                     div.fullwidth
@@ -244,9 +262,9 @@ html
                 .form-group.shadow-sm
                     div.fullwidth
                         h4 9. Please indicate your top 4 choices of topical areas in which your presentation best fits.
-                        div.blocktext
-                            p
-                            | Possible subject areas include the following: Abundance, occupancy, trends; Annual cycle; Behavior; Biogeography; Birds & agriculture; Breeding biology; Breeding Bird Survey (BBS); Brood parasitism; Citizen science/science communication; Climate; Community ecology; Conservation; Development & growth; Diseases/parasites; Ecosystems; Ecotoxicology; Emerging tools; Endocrinology & hormones; Evolution; Evolutionary ecology; Foraging/food habits; General Ecology; Genomics; Habitat change/relationships; Human dimensions/coupled systems; Landscape Ecology; Life history; Management/policy; Mating systems; Metabolic ecology; Migration & Stopover; Models and methods; Molecular ecology; Morphology/molt; Movements/dispersal; Parental care; Phylogenetics; Phylogeography; Physiology; Policy, outreach & education; Pollution/pesticides; Population biology/dynamics; Sexual selection; Songs/vocalizations; Systematics/taxonomy; Tropical ecology; Urban ecology
+                        //- div.blocktext
+                        //-     p
+                        //-     | Possible subject areas include the following: Abundance, occupancy, trends; Annual cycle; Behavior; Biogeography; Birds & agriculture; Breeding biology; Breeding Bird Survey (BBS); Brood parasitism; Citizen science/science communication; Climate; Community ecology; Conservation; Development & growth; Diseases/parasites; Ecosystems; Ecotoxicology; Emerging tools; Endocrinology & hormones; Evolution; Evolutionary ecology; Foraging/food habits; General Ecology; Genomics; Habitat change/relationships; Human dimensions/coupled systems; Landscape Ecology; Life history; Management/policy; Mating systems; Metabolic ecology; Migration & Stopover; Models and methods; Molecular ecology; Morphology/molt; Movements/dispersal; Parental care; Phylogenetics; Phylogeography; Physiology; Policy, outreach & education; Pollution/pesticides; Population biology/dynamics; Sexual selection; Songs/vocalizations; Systematics/taxonomy; Tropical ecology; Urban ecology
                     .rightInput
                         span#Label143
                     div.fullwidth
@@ -484,73 +502,97 @@ script.
     $( document ).ready(function() {
 
     $('#addAuthorBtn').on('click', function(event) {
-
         event.preventDefault();
-
         $trLast = $('#authorTable tr:last');
         var prevnum = $trLast.find('td:first').html();
-
         $trNew = $trLast.clone();
-
         $trNew.find('td:first').html(parseInt(prevnum) + 1);
         $trLast.after($trNew);
-
         $('#authorTable tr:last').find('input').val('');
-
-
-
     });
 
     $('#deleteAuthorBtn').on('click', function(event) {
-
         event.preventDefault();
         $trLast = $('#authorTable tr:last').remove();
+    });
+
+    var wordCount = function( val ){
+        var wom = val.match(/\S+/g);
+        return {
+            charactersNoSpaces : val.replace(/\s+/g, '').length,
+            characters         : val.length,
+            words              : wom ? wom.length : 0,
+            lines              : val.split(/\r*\n/).length
+        };
+    }
+
+    $('.wordLimit').keydown(function () {
+
+        var v = wordCount( $(this).val() );
+        console.log(v.words);
+
+        if (v.words > 250) {
+          var trimmed = $(this).val().split(/\s+/, 250).join(" ");
+          $(this).val(trimmed + " ");
+        }
+
+        $(this).next('.wordLimitDisplay').html("Words: "+ v.words);
 
     });
 
+    $('.charLimit').keydown(function () {
+
+        $(this).val($(this).val().substring(0, 125));
+        var v = wordCount( $(this).val() );
+        $(this).next('.charLimitDisplay').html("Characters: "+ v.characters);
+
+    });
+
+    //- abstractInput.addEventListener("input", function(){
+
+    //-     var v = wordCount( this.value );
+    //-     console.log(v.words);
+
+    //-     if (v.words > 250) {
+    //-       var trimmed = this.value.split(/\s+/, 250).join(" ");
+    //-       abstractInput.value = (trimmed + " ");
+    //-     }
+
+    //-     abstractWordCount.innerHTML = ("Words: "+ v.words);
+
+    //- }, false);
+
+
+    //- titleInput.addEventListener("input", function(){
+        
+
+    //-     titleInput.value = titleInput.value.substring(0, 125);
+    //-     var v = wordCount( this.value );
+
+    //-     titleCharCount.innerHTML = ("Characters: "+ v.characters);
+
+    //- }, false);
+
+    // Form Submission
     $( "form" ).on( "submit", function( event ) {
         event.preventDefault();
         var formdata = $( this ).serialize();
 
 
-    $.ajax({ 
-       url: '/postform',
-       type: 'POST',
-       cache: false, 
-       data: formdata, 
-       success: function(data){
-          alert('Success!')
-       },
-       error: function(jqXHR, textStatus, err){
-           alert('text status '+textStatus+', err '+err)
-       }
-    })
+        $.ajax({ 
+           url: '/postform',
+           type: 'POST',
+           cache: false, 
+           data: formdata, 
+           success: function(data){
+              alert('Success!')
+           },
+           error: function(jqXHR, textStatus, err){
+               alert('text status '+textStatus+', err '+err)
+           }
+        })
 
-    console.log( $( this ).serialize() );
+        console.log( $( this ).serialize() );
 
      });
     });
-
-//- function wordCount( val ){
-//-     var wom = val.match(/\S+/g);
-//-     return {
-//-         charactersNoSpaces : val.replace(/\s+/g, '').length,
-//-         characters         : val.length,
-//-         words              : wom ? wom.length : 0,
-//-         lines              : val.split(/\r*\n/).length
-//-     };
-//- }
-
-
-//- var textarea = document.getElementById("text");
-//- var result   = document.getElementById("result");
-
-//- textarea.addEventListener("input", function(){
-//-   var v = wordCount( this.value );
-//-   result.innerHTML = (
-//-       "<br>Characters (no spaces):  "+ v.charactersNoSpaces +
-//-       "<br>Characters (and spaces): "+ v.characters +
-//-       "<br>Words: "+ v.words +
-//-       "<br>Lines: "+ v.lines
-//-   );
-//- }, false);
