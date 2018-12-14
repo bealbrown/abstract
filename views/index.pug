@@ -1,0 +1,477 @@
+<meta charset="utf-8">
+html
+    head
+        title Abstract
+        meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
+        style(type='text/css').
+
+        style(type='text/css')
+            include css/maincss.css
+
+        script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+    
+    body
+        include topnav.pug
+
+        div#main-container
+            center
+                h2(style="letter-spacing: 2px;") Abstract Submission Form
+            br
+            h4 Welcome!  Please submit your abstract for the 8th Western Hemisphere Shorebird Group meeting, to be held in Panama City, Panama, October 24-28, 2019. Abstracts are due by 5 April 2019.
+            p Please prepare your abstract title and text, and have the names of all the coauthors ready.  You will not be able to save your work and return, so should plan to complete your submission in one session. 
+            br
+            form
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 1. Enter the names and contact info of the authors of this presentation.
+                        div.blocktext
+                            p For all authors, please provide their name as it should appear in the conference program and abstract book. 
+                            br
+                    .rightInput
+                        span#Label34
+                    div.fullwidth
+                        .formInfo
+                            h4 Which author is presenting? 
+                        .rightInput
+                            input.inputText.form-control(type="text", name='presenterInput')
+
+
+                    table(id="authorTable")
+                        tr
+                            th(style="width: 20px;") #
+                            th First Name
+                            th Middle or Initial
+                            th Last Name
+                            th Primary Institution
+                            th Phone
+                            th Email
+                        tr
+                            td(style="font-size: 16px") 1
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td
+                                input.inputText.form-control(type='text')
+                    div.authorBtnBox
+                        button(id="addAuthorBtn", class="btn btn-primary") Add Author
+                        button(id="deleteAuthorBtn", class="btn btn-secondary") Delete Author
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 2. Title of presentation (125-character limit)
+                        p Please enter the title as it should appear in the program and abstract book. Titles may not exceed 125 characters. 
+                        p Please enter both English and Spanish titles if you can; otherwise we will translate them for you. If you wish to submit an abstract in a language other than Spanish or English, please email the Scientific Program Committee chair, Stephen Brown, at sbrown@manomet.org.
+                    br
+                    h5 English
+                    input.charLimit.inputText.form-control(type="text", name='englishTitleInput')
+                    div.charLimitDisplay
+                    br
+                    h5 Spanish
+                    input.charLimit.inputText.form-control(type="text", name='spanishTitleInput')
+                    div.charLimitDisplay
+
+                .form-group.shadow-sm
+                    h4 7. Abstract (250-word limit)
+                    p Please enter both English and Spanish abstracts if you can; otherwise we will translate them for you.
+                    h5 English
+                    textarea.wordLimit.inputText.form-control(name='englishAbstractInput', style="width: 100% ")
+                    div.wordLimitDisplay
+                    br
+                    h5 Spanish
+                    textarea.wordLimit.inputText.form-control(name='spanishAbstractInput', style="width: 100% ")
+                    div.wordLimitDisplay
+
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 3. Please indicate your preferences for the three presentation formats
+                        p (15 min talk, 5 min lightning, and poster)
+                    div.fullwidth
+                        .formInfo
+                            p 1st Choice 
+                        .rightInput
+                            select.form-control(name='RadComboBox139_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  15 minute talk 
+                                option  5 minute lightning 
+                                option  Poster 
+                                option  No preference 
+
+                    div.fullwidth
+                        .formInfo
+                            p 2nd Choice 
+                        .rightInput
+                            select.form-control(name='RadComboBox140_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  15 minute talk 
+                                option  5 minute lightning 
+                                option  Poster 
+                                option  No preference 
+                                option  I do not want another format 
+                    div.fullwidth
+                        .formInfo
+                            p 3rd Choice 
+                            br
+                            span.helpText  
+                            br
+                        .rightInput
+                            select.form-control(name='RadComboBox141_DropDown')
+                                option(value="", disabled, selected) Select
+                                option  15 minute talk 
+                                option  5 minute lightning 
+                                option  Poster 
+                                option  No preference 
+                                option  I do not want another format 
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 4. Please indicate your top 4 choices of topical areas in which your presentation best fits.
+                        //- div.blocktext
+                        //-     p
+                        //-     | Possible subject areas include the following: Abundance, occupancy, trends; Annual cycle; Behavior; Biogeography; Birds & agriculture; Breeding biology; Breeding Bird Survey (BBS); Brood parasitism; Citizen science/science communication; Climate; Community ecology; Conservation; Development & growth; Diseases/parasites; Ecosystems; Ecotoxicology; Emerging tools; Endocrinology & hormones; Evolution; Evolutionary ecology; Foraging/food habits; General Ecology; Genomics; Habitat change/relationships; Human dimensions/coupled systems; Landscape Ecology; Life history; Management/policy; Mating systems; Metabolic ecology; Migration & Stopover; Models and methods; Molecular ecology; Morphology/molt; Movements/dispersal; Parental care; Phylogenetics; Phylogeography; Physiology; Policy, outreach & education; Pollution/pesticides; Population biology/dynamics; Sexual selection; Songs/vocalizations; Systematics/taxonomy; Tropical ecology; Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            p 1st Choice
+                        .rightInput
+                            select.form-control#ListBox145(name='ListBox145')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            p 2nd Choice
+                        .rightInput
+                            select.form-control#ListBox146(name='ListBox146')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            p 3rd Choice
+                        .rightInput
+                            select.form-control#ListBox147(name='ListBox147')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                    div.fullwidth
+                        .formInfo
+                            p 4th Choice
+                        .rightInput
+                            select.form-control#ListBox148(name='ListBox148')
+                                option(value="", disabled, selected) Select
+                                option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
+                                option(value='Annual cycle') Annual cycle
+                                option(value='Behavior') Behavior
+                                option(value='Biogeography') Biogeography
+                                option(value='Birds & agriculture') Birds & agriculture
+                                option(value='Breeding biology') Breeding biology
+                                option(value='Breeding Bird Survey (BBS)') Breeding Bird Survey (BBS)
+                                option(value='Brood parasitism') Brood parasitism
+                                option(value='Citizen science/science communication') Citizen science/science communication
+                                option(value='Climate') Climate
+                                option(value='Community ecology') Community ecology
+                                option(value='Conservation') Conservation
+                                option(value='Development & growth') Development & growth
+                                option(value='Diseases/parasites') Diseases/parasites
+                                option(value='Ecosystems') Ecosystems
+                                option(value='Ecotoxicology') Ecotoxicology
+                                option(value='Emerging tools') Emerging tools
+                                option(value='Endocrinology & hormones') Endocrinology & hormones
+                                option(value='Evolution') Evolution
+                                option(value='Evolutionary ecology') Evolutionary ecology
+                                option(value='Foraging/food habits') Foraging/food habits
+                                option(value='General ecology') General ecology
+                                option(value='Genomics') Genomics
+                                option(value='Habitat change/relationships') Habitat change/relationships
+                                option(value='Human dimensions/coupled systems') Human dimensions/coupled systems
+                                option(value='Landscape ecology') Landscape ecology
+                                option(value='Life history') Life history
+                                option(value='Management/policy') Management/policy
+                                option(value='Mating systems') Mating systems
+                                option(value='Metabolic ecology') Metabolic ecology
+                                option(value='Migration & stopover') Migration & stopover
+                                option(value='Models & methods') Models & methods
+                                option(value='Molecular ecology') Molecular ecology
+                                option(value='Morphology/molt') Morphology/molt
+                                option(value='Movements/dispersal') Movements/dispersal
+                                option(value='Parental care') Parental care
+                                option(value='Phylogenetics') Phylogenetics
+                                option(value='Phylogeography') Phylogeography
+                                option(value='Physiology') Physiology
+                                option(value='Policy, outreach & education') Policy, outreach & education
+                                option(value='Pollution/pesticides') Pollution/pesticides
+                                option(value='Population biology/dynamics') Population biology/dynamics
+                                option(value='Sexual selection') Sexual selection
+                                option(value='Songs/vocalizations') Songs/vocalizations
+                                option(value='Systematics/taxonomy') Systematics/taxonomy
+                                option(value='Tropical ecology') Tropical ecology
+                                option(value='Urban ecology') Urban ecology
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 5. Please indicate the student status of the presenting author. 
+                    .rightInput
+                        select.form-control(name='RadComboBox5_DropDown')
+                            option(value="", disabled, selected) Select
+                            option  Pre-college 
+                            option  Undergraduate student 
+                            option  Masters student 
+                            option  Doctoral student 
+                            option  Postdoctoral 
+                            option  Individual between degree-seeking programs 
+                            option  Presenting author is NOT a student or a postdoc 
+                
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 6. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
+                        p To be considered, you must be the primary author and presenter of the paper which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. 
+                    .rightInput
+                        select.form-control(name='RadComboBox11_DropDown')
+                            option(value="", disabled, selected) Select
+                            option  Yes 
+                            option  No 
+                
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 7. Would the presenter like to be considered for a student travel award, or a Latin American professional travel award?
+                        p To be considered, you must present a talk or a poster, and be a student, which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs, or a Latin American professional.
+                    .rightInput
+                        select.form-control(name='RadComboBox18_DropDown')
+                            option(value="", disabled, selected) Select
+                            option  Yes 
+                            option  No 
+                .form-group.shadow-sm
+                    h4 8. Please note if you have any special needs for your presentation
+                    p (e.g., I will require wheelchair assistance).
+                    textarea#TextBox150.inputText.form-control(name='TextBox150')
+                .form-group.shadow-sm
+                    h4 9. Please enter any notes to the Scientific Program Committee.
+                    textarea#TextBox152.inputText.form-control(name='TextBox152')
+                .form-group.shadow-sm
+                    h4 10. Are you willing to chair your session or a different session? 
+                    select.form-control(name='RadComboBox154_DropDown')
+                        option(value="", disabled, selected) Select
+                        option  Yes, my session only 
+                        option  Yes, another session only 
+                        option  Yes, either my session or a different session 
+                        option  No, I do not wish to chair a session 
+                .form-group
+                    button(type="submit" class="btn btn-primary", style="float: right") Submit
+
+
+script.
+
+    $( document ).ready(function() {
+
+    $('#addAuthorBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        $trNew = $trLast.clone();
+        $trNew.find('td:first').html(parseInt(prevnum) + 1);
+        $trLast.after($trNew);
+        $('#authorTable tr:last').find('input').val('');
+    });
+
+    $('#deleteAuthorBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last').remove();
+    });
+
+    var wordCount = function( val ){
+        var wom = val.match(/\S+/g);
+        return {
+            charactersNoSpaces : val.replace(/\s+/g, '').length,
+            characters         : val.length,
+            words              : wom ? wom.length : 0,
+            lines              : val.split(/\r*\n/).length
+        };
+    }
+
+    $('.wordLimit').on('keydown change', function () {
+
+        var v = wordCount( $(this).val() );
+
+        if (v.words > 250) {
+          var trimmed = $(this).val().split(/\s+/, 250).join(" ");
+          $(this).val(trimmed + " ");
+          v.words = 250;
+        }
+
+        $(this).next('.wordLimitDisplay').html("Words: "+ v.words);
+
+    });
+
+    $('.charLimit').on('keyup keydown change', function () {
+
+        $(this).val($(this).val().substring(0, 125));
+        var v = wordCount( $(this).val() );
+        $(this).next('.charLimitDisplay').html("Characters: "+ v.characters);
+
+    });
+
+    // Form Submission
+    $( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        var formdata = $( this ).serialize();
+
+
+        $.ajax({ 
+           url: '/postform',
+           type: 'POST',
+           cache: false, 
+           data: formdata, 
+           success: function(data){
+              alert('Success!')
+           },
+           error: function(jqXHR, textStatus, err){
+               alert('text status '+textStatus+', err '+err)
+           }
+        })
+
+        console.log( $( this ).serialize() );
+
+     });
+    });

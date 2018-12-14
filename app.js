@@ -16,18 +16,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'pug')
 
 app.get('/', function (req, res) {
-  res.render('pindex.pug');
+  res.render('index.pug');
+})
+
+app.get('/es', function (req, res) {
+  res.render('esindex.pug');
+})
+
+app.get('/symposium', function (req, res) {
+  res.render('symposium.pug');
 })
 
 app.post('/postform', function(req , res){
    console.log(req.body);
    res.redirect('/');
 });
-
-app.get('/test', function(req,res) {
-        console.log("test");
-})
-
 
 
 
