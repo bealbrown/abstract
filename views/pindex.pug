@@ -19,9 +19,10 @@ html
 
         div#main-container
             center
-                h1(style="letter-spacing: 2px;") Abstract Submission Form
+                h2(style="letter-spacing: 2px;") Abstract Submission Form
             br
             h4 Welcome!  Please submit your abstract for the 8th Western Hemisphere Shorebird Group meeting, to be held in Panama City, Panama, October 24-28, 2019. Abstracts are due by 5 April 2019.
+            p Please prepare your abstract title and text, and have the names of all the coauthors ready.  You will not be able to save your work and return, so should plan to complete your submission in one session. 
             br
             form
                 .form-group.shadow-sm
@@ -36,20 +37,8 @@ html
                         .formInfo
                             h4 Which author is presenting? 
                         .rightInput
-                            select.form-control(name='RadComboBox35_DropDown')
-                                option(value="", disabled, selected) Select
-                                option  1st Author 
-                                option  2nd Author 
-                                option  3rd Author 
-                                option  4th Author 
-                                option  5th Author 
-                                option  6th Author 
-                                option  7th Author 
-                                option  8th Author 
-                                option  9th Author 
-                                option  10th Author 
-                                option  11th Author 
-                                option  12th Author 
+                            input.inputText.form-control(type="text", name='presenterInput')
+
 
                     table(id="authorTable")
                         tr
@@ -414,7 +403,7 @@ html
                         option  Yes, either my session or a different session 
                         option  No, I do not wish to chair a session 
                 .form-group
-                    button(type="submit" class="btn btn-primary") Submit
+                    button(type="submit" class="btn btn-primary", style="float: right") Submit
 
 
 script.
