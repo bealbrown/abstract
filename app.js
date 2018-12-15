@@ -4,45 +4,63 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 const mysql = require('mysql')
-// const connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'dbuser',
-//   password : 's3kreee7',
-//   database : 'my_db'
-// });
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'pug')
 
-app.get('/', function (req, res) {
-  res.render('index.pug');
-})
 
-app.get('/es', function (req, res) {
-  res.render('esindex.pug');
-})
-
-app.get('/symposium', function (req, res) {
-  res.render('symposium.pug');
-})
-
-app.post('/postform', function(req , res){
-   console.log(req.body);
-   res.redirect('/');
+var connection = mysql.createConnection({
+    host: '198.199.91.241',
+    user: 'ethan',
+    password: process.env.ABSPASS
 });
 
+connection.connect(function(err) {
+    if (err) {
+        console.error('error connecting: ' + err.stack);
+        return;
+    }
+    console.log('connected as id ' + connection.threadId)
+});
 
+// ROUTES
+app.get('/', function(req, res) {
+    res.render('index.pug');
+})
 
-// connection.connect()
+app.get('/es', function(req, res) {
+    res.render('esindex.pug');
+})
 
-// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
-//   if (err) throw err
+app.get('/symposium', function(req, res) {
+    res.render('symposium.pug');
+})
 
-//   console.log('The solution is: ', rows[0].solution)
-// })
+app.post('/postform', function(req, res) {
 
-// connection.end()
+    var names = [];
+    var values = [];
 
+    for (name in req.body) {
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+        var name = connection.escapeId(name);
+        names.push(name);
+
+        if (name == '') {
+            values.push('NULL');
+        } else {
+            var value = connection.escape(req.body[name])
+            values.push(value);
+        }
+    }
+
+    connection.query('INSERT INTO abstract.mainEnglish (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, rows, fields) {
+        if (err) {console.log(err); return;}
+    });
+
+    res.redirect('/tetwetwetwet');
+
+});
+
+app.listen(port, () => console.log(`Listening on port ${port}!`))

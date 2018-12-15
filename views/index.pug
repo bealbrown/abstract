@@ -37,7 +37,7 @@ html
                         .formInfo
                             h4 Which author is presenting? 
                         .rightInput
-                            input.inputText.form-control(type="text", name='presenterInput')
+                            input.inputText.form-control(type="text", name='presenter')
 
 
                     table(id="authorTable")
@@ -52,17 +52,17 @@ html
                         tr
                             td(style="font-size: 16px") 1
                             td 
-                                input.inputText.form-control(type='text')
+                                input.inputText.form-control(type='text', name="authFirst")
                             td 
-                                input.inputText.form-control(type='text')
+                                input.inputText.form-control(type='text', name="authMiddle")
                             td 
-                                input.inputText.form-control(type='text')
+                                input.inputText.form-control(type='text', name="authLast")
                             td 
-                                input.inputText.form-control(type='text')
+                                input.inputText.form-control(type='text', name="authPrimary")
                             td 
-                                input.inputText.form-control(type='text')
+                                input.inputText.form-control(type='text', name="authPhone")
                             td
-                                input.inputText.form-control(type='text')
+                                input.inputText.form-control(type='text', name="authEmail")
                     div.authorBtnBox
                         button(id="addAuthorBtn", class="btn btn-primary") Add Author
                         button(id="deleteAuthorBtn", class="btn btn-secondary") Delete Author
@@ -73,22 +73,22 @@ html
                         p Please enter both English and Spanish titles if you can; otherwise we will translate them for you. If you wish to submit an abstract in a language other than Spanish or English, please email the Scientific Program Committee chair, Stephen Brown, at sbrown@manomet.org.
                     br
                     h5 English
-                    input.charLimit.inputText.form-control(type="text", name='englishTitleInput')
+                    input.charLimit.inputText.form-control(type="text", name='englishTitle')
                     div.charLimitDisplay
                     br
                     h5 Spanish
-                    input.charLimit.inputText.form-control(type="text", name='spanishTitleInput')
+                    input.charLimit.inputText.form-control(type="text", name='spanishTitle')
                     div.charLimitDisplay
 
                 .form-group.shadow-sm
                     h4 7. Abstract (250-word limit)
                     p Please enter both English and Spanish abstracts if you can; otherwise we will translate them for you.
                     h5 English
-                    textarea.wordLimit.inputText.form-control(name='englishAbstractInput', style="width: 100% ")
+                    textarea.wordLimit.inputText.form-control(name='englishAbstract', style="width: 100% ")
                     div.wordLimitDisplay
                     br
                     h5 Spanish
-                    textarea.wordLimit.inputText.form-control(name='spanishAbstractInput', style="width: 100% ")
+                    textarea.wordLimit.inputText.form-control(name='spanishAbstract', style="width: 100% ")
                     div.wordLimitDisplay
 
                 .form-group.shadow-sm
@@ -99,7 +99,7 @@ html
                         .formInfo
                             p 1st Choice 
                         .rightInput
-                            select.form-control(name='RadComboBox139_DropDown')
+                            select.form-control(name='presentationChoice1')
                                 option(value="", disabled, selected) Select
                                 option  15 minute talk 
                                 option  5 minute lightning 
@@ -110,7 +110,7 @@ html
                         .formInfo
                             p 2nd Choice 
                         .rightInput
-                            select.form-control(name='RadComboBox140_DropDown')
+                            select.form-control(name='presentationChoice2')
                                 option(value="", disabled, selected) Select
                                 option  15 minute talk 
                                 option  5 minute lightning 
@@ -124,7 +124,7 @@ html
                             span.helpText  
                             br
                         .rightInput
-                            select.form-control(name='RadComboBox141_DropDown')
+                            select.form-control(name='presentationChoice3')
                                 option(value="", disabled, selected) Select
                                 option  15 minute talk 
                                 option  5 minute lightning 
@@ -141,7 +141,7 @@ html
                         .formInfo
                             p 1st Choice
                         .rightInput
-                            select.form-control#ListBox145(name='ListBox145')
+                            select.form-control#ListBox145(name='topicChoice1')
                                 option(value="", disabled, selected) Select
                                 option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
                                 option(value='Annual cycle') Annual cycle
@@ -194,7 +194,7 @@ html
                         .formInfo
                             p 2nd Choice
                         .rightInput
-                            select.form-control#ListBox146(name='ListBox146')
+                            select.form-control#ListBox146(name='topicChoice2')
                                 option(value="", disabled, selected) Select
                                 option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
                                 option(value='Annual cycle') Annual cycle
@@ -247,7 +247,7 @@ html
                         .formInfo
                             p 3rd Choice
                         .rightInput
-                            select.form-control#ListBox147(name='ListBox147')
+                            select.form-control#ListBox147(name='topicChoice3')
                                 option(value="", disabled, selected) Select
                                 option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
                                 option(value='Annual cycle') Annual cycle
@@ -300,7 +300,7 @@ html
                         .formInfo
                             p 4th Choice
                         .rightInput
-                            select.form-control#ListBox148(name='ListBox148')
+                            select.form-control#ListBox148(name='topicChoice4')
                                 option(value="", disabled, selected) Select
                                 option(value='Abundance, occupancy, trends') Abundance, occupancy, trends
                                 option(value='Annual cycle') Annual cycle
@@ -353,7 +353,7 @@ html
                     .formInfo
                         h4 5. Please indicate the student status of the presenting author. 
                     .rightInput
-                        select.form-control(name='RadComboBox5_DropDown')
+                        select.form-control(name='studentStatus')
                             option(value="", disabled, selected) Select
                             option  Pre-college 
                             option  Undergraduate student 
@@ -368,7 +368,7 @@ html
                         h4 6. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
                         p To be considered, you must be the primary author and presenter of the paper which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. 
                     .rightInput
-                        select.form-control(name='RadComboBox11_DropDown')
+                        select.form-control(name='presentationAward')
                             option(value="", disabled, selected) Select
                             option  Yes 
                             option  No 
@@ -378,20 +378,20 @@ html
                         h4 7. Would the presenter like to be considered for a student travel award, or a Latin American professional travel award?
                         p To be considered, you must present a talk or a poster, and be a student, which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs, or a Latin American professional.
                     .rightInput
-                        select.form-control(name='RadComboBox18_DropDown')
+                        select.form-control(name='travelAward')
                             option(value="", disabled, selected) Select
                             option  Yes 
                             option  No 
                 .form-group.shadow-sm
                     h4 8. Please note if you have any special needs for your presentation
                     p (e.g., I will require wheelchair assistance).
-                    textarea#TextBox150.inputText.form-control(name='TextBox150')
+                    textarea#TextBox150.inputText.form-control(name='specialNeeds')
                 .form-group.shadow-sm
                     h4 9. Please enter any notes to the Scientific Program Committee.
-                    textarea#TextBox152.inputText.form-control(name='TextBox152')
+                    textarea#TextBox152.inputText.form-control(name='notes')
                 .form-group.shadow-sm
                     h4 10. Are you willing to chair your session or a different session? 
-                    select.form-control(name='RadComboBox154_DropDown')
+                    select.form-control(name='chairSession')
                         option(value="", disabled, selected) Select
                         option  Yes, my session only 
                         option  Yes, another session only 
@@ -417,7 +417,12 @@ script.
 
     $('#deleteAuthorBtn').on('click', function(event) {
         event.preventDefault();
-        $trLast = $('#authorTable tr:last').remove();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        if (prevnum != "1") {
+            $trLast = $('#authorTable tr:last').remove();
+        }
+        
     });
 
     var wordCount = function( val ){
@@ -456,8 +461,7 @@ script.
     $( "form" ).on( "submit", function( event ) {
         event.preventDefault();
         var formdata = $( this ).serialize();
-
-
+        
         $.ajax({ 
            url: '/postform',
            type: 'POST',

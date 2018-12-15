@@ -145,7 +145,11 @@ script.
 
     $('#deleteAuthorBtn').on('click', function(event) {
         event.preventDefault();
-        $trLast = $('#authorTable tr:last').remove();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        if (prevnum != "1") {
+            $trLast = $('#authorTable tr:last').remove();
+        }
     });
 
     var wordCount = function( val ){
