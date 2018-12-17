@@ -52,17 +52,17 @@ html
                         tr
                             td(style="font-size: 16px") 1
                             td 
-                                input.inputText.form-control(type='text', name="authFirst")
+                                input.authorInput.inputText(type='text')
                             td 
-                                input.inputText.form-control(type='text', name="authMiddle")
+                                input.authorInput.inputText(type='text')
                             td 
-                                input.inputText.form-control(type='text', name="authLast")
+                                input.authorInput.inputText(type='text')
                             td 
-                                input.inputText.form-control(type='text', name="authPrimary")
+                                input.authorInput.inputText(type='text')
                             td 
-                                input.inputText.form-control(type='text', name="authPhone")
+                                input.authorInput.inputText(type='text')
                             td
-                                input.inputText.form-control(type='text', name="authEmail")
+                                input.authorInput.inputText(type='text')
                     div.authorBtnBox
                         button(id="addAuthorBtn", class="btn btn-primary") Add Author
                         button(id="deleteAuthorBtn", class="btn btn-secondary") Delete Author
@@ -459,23 +459,44 @@ script.
 
     // Form Submission
     $( "form" ).on( "submit", function( event ) {
+
         event.preventDefault();
-        var formdata = $( this ).serialize();
-        
+
+        var main = {};
+        var formObj = ($( this ).serializeArray())
+        main['theForm'] = formObj;
+
+        var authors = [];
+        $('#authorTable tr:has(td)').map(function(i, v) {
+            var td =  $('td', this);
+            authors.push({
+                id: ++i,
+                fist: td.children().eq(0).val(),
+                middle: td.children().eq(1).val(),
+                last: td.children().eq(2).val(),
+                primary: td.children().eq(3).val(),
+                phone: td.children().eq(4).val(),
+                email: td.children().eq(5).val()
+            });           
+        });
+
+        main['authors'] = authors;
+        var json = JSON.stringify(main);
+        console.log(main);
+
         $.ajax({ 
            url: '/postform',
            type: 'POST',
-           cache: false, 
-           data: formdata, 
+           contentType: "application/json",
+           data: json,
            success: function(data){
-              alert('Success!')
+              console.log("success");
            },
            error: function(jqXHR, textStatus, err){
                alert('text status '+textStatus+', err '+err)
            }
         })
 
-        console.log( $( this ).serialize() );
 
      });
     });

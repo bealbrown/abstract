@@ -5,7 +5,8 @@ const app = express()
 const port = 3000
 const mysql = require('mysql')
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({limit: '50mb'}));
+
 
 app.set('view engine', 'pug')
 
@@ -24,7 +25,7 @@ connection.connect(function(err) {
     console.log('connected as id ' + connection.threadId)
 });
 
-// ROUTES
+// -------- GET ROUTES -------- 
 app.get('/', function(req, res) {
     res.render('index.pug');
 })
@@ -37,29 +38,43 @@ app.get('/symposium', function(req, res) {
     res.render('symposium.pug');
 })
 
+// -------- POST ROUTES ---------
 app.post('/postform', function(req, res) {
 
     var names = [];
     var values = [];
 
-    for (name in req.body) {
+    var theForm = req.body.theForm;
 
-        var name = connection.escapeId(name);
-        names.push(name);
+    for (row in theForm) {
+        names.push(connection.escapeId(theForm[row].name));
+        var value = connection.escape(theForm[row].value);
 
-        if (name == '') {
+        if (value == '') {
             values.push('NULL');
         } else {
-            var value = connection.escape(req.body[name])
             values.push(value);
         }
     }
 
-    connection.query('INSERT INTO abstract.mainEnglish (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, rows, fields) {
-        if (err) {console.log(err); return;}
+    // storing authors as json object. Perhaps not ideal, but will have to do post-processing on data anyway
+    // appears to handle all unicode characters fine and produce valid object notation, so easy later on...
+
+    names.push("authors");
+    values.push(connection.escape(JSON.stringify(req.body.authors)));
+
+    connection.query('INSERT INTO abstract.mainEnglish (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log(result.insertId);
+        }
     });
 
-    res.redirect('/tetwetwetwet');
+    // console.log(values);
+
+    res.redirect('/');
 
 });
 
