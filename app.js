@@ -64,7 +64,7 @@ app.post('/postform', function(req, res) {
     names.push("authors");
     values.push(connection.escape(JSON.stringify(req.body.authors)));
 
-    connection.query('INSERT INTO abstract.'+ whichDb + ' (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, result) {
+    connection.query('INSERT INTO abstract.'+ whichDB + ' (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, result) {
         if (err) {
             console.log(err);
             return;
