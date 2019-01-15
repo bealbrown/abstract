@@ -13,24 +13,39 @@ app.set('view engine', 'pug')
 
 // -------- GET ROUTES -------- 
 app.get('/', function(req, res) {
-    res.render('index.pug');
+    res.render('abstract.pug');
 })
 
 app.get('/es', function(req, res) {
-    res.render('esindex.pug');
+    res.render('abstract_es.pug');
+})
+
+app.get('/thanks_en', function(req, res) {
+    res.render('thanks.pug');
+})
+
+app.get('/thanks_es', function(req, res) {
+    res.render('thanks_es.pug');
 })
 
 app.get('/symposium', function(req, res) {
     res.render('symposium.pug');
 })
 
+app.get('/symposium_es', function(req, res) {
+    res.render('symposium_es.pug');
+})
+
+
 // -------- POST ROUTES ---------
 app.post('/postEnglish', function(req, res) {
     writetoDB(req,res,"mainEnglish");
+    res.redirect("/thanks_en");
 });
 
 app.post('/postSpanish', function(req, res) {
-    writetoDB(req,res,"mainEnglish");
+    writetoDB(req,res,"mainSpanish");
+    res.redirect("/thanks_es");
 });
 
 
@@ -72,13 +87,11 @@ var writetoDB = function(req, res, whichDB) {
             console.log(err);
             return;
         } else {
-            console.log(result.insertId);
+            console.log(result.insertId + " " + whichDB);
         }
     });
 
-    // console.log(values);
-
-    res.redirect('/');
+    // console.log(values);    
 
     connection.end(function(err) {
         if (err) {
@@ -87,6 +100,7 @@ var writetoDB = function(req, res, whichDB) {
         }
     });
 
+    return;
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))

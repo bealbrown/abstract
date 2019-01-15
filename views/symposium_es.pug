@@ -1,0 +1,210 @@
+<meta charset="utf-8">
+html
+    head
+        title Symposium
+        meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
+        style(type='text/css').
+
+        style(type='text/css')
+            include css/maincss.css
+
+        script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+    
+    body
+        include topnav.pug
+
+        div#main-container
+            center
+                h2(style="letter-spacing: 2px;") Presentación de Propuestas de Simposios
+            br
+            h4 ¡Bienvenido! Ingrese los datos en los campos correspondientes para enviar su propuesta de un Simposio en el marco de la 8ª reunión del Grupo de Aves Playas del Hemisferio Occidental en la Ciudad de Panamá, Panamá, del 24 al 28 de octubre de 2019.
+            form
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 Por favor ingrese el título del Simposio propuesto:
+                        p (150 character Limit)
+                    br
+                    h5 Inglés
+                    input.charLimit.inputText.form-control(type="text", name='englishTitleInput')
+                    div.charLimitDisplay
+                    br
+                    h5 Español
+                    input.charLimit.inputText.form-control(type="text", name='spanishTitleInput')
+                    div.charLimitDisplay
+
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 Por favor ingrese los nombres y afiliaciones de los organizadores del Simposio:
+                    .rightInput
+                        span#Label34
+                    div.fullwidth
+                        .formInfo
+                            h4 ¿Qué autor está presentando?
+                        .rightInput
+                            input.inputText.form-control(type="text", name='presenterInput')
+
+
+                    table(id="authorTable")
+                        tr
+                            th(style="width: 20px;") #
+                            th Primer nombre
+                            th Segundo nombre o inicial
+                            th Apellido
+                            th Institución
+                            th Teléfono
+                            th e-mail
+                        tr
+                            td(style="font-size: 16px") 1
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.form-control(type='text')
+                            td
+                                input.inputText.form-control(type='text')
+                    div.authorBtnBox
+                        button(id="addAuthorBtn", class="btn btn-primary") Añadir Autor
+                        button(id="deleteAuthorBtn", class="btn btn-secondary") Borrar Autor
+
+                .form-group.shadow-sm
+                    h4 3.  Ingrese una breve descripción del Simposio propuesto en 250 palabras o menos:
+                    br
+                    h5 Inglés
+                    textarea.wordLimit.inputText.form-control(name='englishAbstractInput', style="width: 100% ")
+                    div.wordLimitDisplay
+                    br
+                    h5 Español
+                    textarea.wordLimit.inputText.form-control(name='spanishAbstractInput', style="width: 100% ")
+                    div.wordLimitDisplay
+
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 Indique si está interesado en planificar un Simposio de medio día (ocho espacios de presentación) o de un día completo (16 espacios de presentación):
+                        .rightInput
+                            select.form-control(name='RadComboBox139_DropDown')
+                                option(value="", disabled, selected) Seleccionar
+                                option  Medio día
+                                option  Día completo
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 Por favor ingrese los nombres y temas de presentación de cualquier participante del Simposio que tenga en mente 
+                        p (no necesita identificar a todos los presentadores, solo aquellos que ya conoce serán invitados):
+
+                    table(id="topicTable")
+                        tr
+                            th(style="width: 20px;") #
+                            th Nombre
+                            th Tema
+                        tr
+                            td(style="font-size: 16px") 1
+                            td 
+                                input.inputText.form-control(type='text')
+                            td 
+                                input.inputText.charLimit.form-control(type='text', style="width: 600px;")
+                    div.authorBtnBox
+                        button(id="addTopicButton", class="btn btn-primary") Añadir fila
+                        button(id="deleteTopicButton", class="btn btn-secondary") Quitar fila
+                .form-group.shadow-sm
+                    h4 Por favor introduzca cualquier nota al Comité Científico: 
+                    textarea#TextBox152.inputText.form-control(name='TextBox152')
+                .form-group
+                    button(type="submit" class="btn btn-primary", style="float: right") Enviar
+
+
+script.
+
+    $( document ).ready(function() {
+
+    $('#addAuthorBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        $trNew = $trLast.clone();
+        $trNew.find('td:first').html(parseInt(prevnum) + 1);
+        $trLast.after($trNew);
+        $('#authorTable tr:last').find('input').val('');
+    });
+
+    $('#addTopicButton').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#topicTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        $trNew = $trLast.clone();
+        $trNew.find('td:first').html(parseInt(prevnum) + 1);
+        $trLast.after($trNew);
+        $('#topicTable tr:last').find('input').val('');
+    });
+
+    $('#deleteAuthorBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        if (prevnum != "1") {
+            $trLast = $('#authorTable tr:last').remove();
+        }
+    });
+
+    var wordCount = function( val ){
+        var wom = val.match(/\S+/g);
+        return {
+            charactersNoSpaces : val.replace(/\s+/g, '').length,
+            characters         : val.length,
+            words              : wom ? wom.length : 0,
+            lines              : val.split(/\r*\n/).length
+        };
+    }
+
+    $('.wordLimit').on('keydown change', function () {
+
+        var v = wordCount( $(this).val() );
+
+        if (v.words > 250) {
+          var trimmed = $(this).val().split(/\s+/, 250).join(" ");
+          $(this).val(trimmed + " ");
+          v.words = 250;
+        }
+
+        $(this).next('.wordLimitDisplay').html("Words: "+ v.words);
+
+    });
+
+    $('.charLimit').on('keyup keydown change', function () {
+
+        $(this).val($(this).val().substring(0, 150));
+        var v = wordCount( $(this).val() );
+        $(this).next('.charLimitDisplay').html("Characters: "+ v.characters);
+
+    });
+
+    // Form Submission
+    $( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        var formdata = $( this ).serialize();
+
+
+        $.ajax({ 
+           url: '/postform',
+           type: 'POST',
+           cache: false, 
+           data: formdata, 
+           success: function(data){
+              alert('Success!')
+           },
+           error: function(jqXHR, textStatus, err){
+               alert('text status '+textStatus+', err '+err)
+           }
+        })
+
+        console.log( $( this ).serialize() );
+
+     });
+    });

@@ -1,0 +1,361 @@
+<meta charset="utf-8">
+html
+    head
+        title Abstract
+        meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
+        style(type='text/css').
+
+        style(type='text/css')
+            include css/maincss.css
+
+        script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')
+    
+    body
+        include topnav.pug
+
+        div#main-container
+            center
+                h2(style="letter-spacing: 2px;") Formato de Presentación de Resúmenes
+                a(href='/')
+                    h5 For English Click Here
+            br
+            h4 ¡Bienvenido! Envíe su resumen para la 8ª Reunión del Grupo de Aves Playas del Hemisferio Occidental, que se realizará en la Ciudad de Panamá, Panamá, del 24 al 28 de octubre de 2019. Los resúmenes deben presentarse antes del 5 de abril de 2019.
+            p Prepare por favor el título y texto de su resumen, y tenga listos los nombres de todos los coautores. No podrá guardar su trabajo y regresar, por lo que por favor planifique completar la presentación de su resumen en una sesión.
+            br
+            form
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 1. Ingrese los nombres y la información de contacto de los autores de esta presentación.
+                        div.blocktext
+                            p Para todos los autores, indique el nombre como debe aparecer en el programa de la Reunión y en el libro de resúmenes.
+                            br
+                    .rightInput
+                        span#Label34
+                    div.fullwidth
+                        .formInfo
+                            h4 ¿Qué autor está presentando?
+                        .rightInput
+                            input.inputText.form-control(type="text", name='presenter')
+
+
+                    table(id="authorTable")
+                        tr
+                            th(style="width: 20px;") #
+                            th Primer nombre
+                            th Segundo nombre o inicial
+                            th Apellido
+                            th Institución
+                            th Teléfono
+                            th e-mail
+                        tr
+                            td(style="font-size: 16px") 1
+                            td 
+                                input.authorInput.inputText(type='text')
+                            td 
+                                input.authorInput.inputText(type='text')
+                            td 
+                                input.authorInput.inputText(type='text')
+                            td 
+                                input.authorInput.inputText(type='text')
+                            td 
+                                input.authorInput.inputText(type='text')
+                            td
+                                input.authorInput.inputText(type='text')
+                    div.authorBtnBox
+                        button(id="addAuthorBtn", class="btn btn-primary") Añadir Autor
+                        button(id="deleteAuthorBtn", class="btn btn-secondary") Borrar Autor
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 2. Título de la presentación (límite de 125 caracteres)
+                        p Por favor ingrese el título como debería aparecer en el programa y en el libro de resúmenes. 
+                        p Por favor si puede ingrese los títulos en inglés y español, de lo contrario los traduciremos por usted. Si desea enviar un resumen en un idioma que no sea español o inglés, envíe un correo electrónico al presidente del Comité del Programa Científico, Stephen Brown, a sbrown@manomet.org.
+                    br
+                    h5 Inglés
+                    input.charLimit.inputText.form-control(type="text", name='englishTitle')
+                    div.charLimitDisplay
+                    br
+                    h5 Español
+                    input.charLimit.inputText.form-control(type="text", name='spanishTitle')
+                    div.charLimitDisplay
+
+                .form-group.shadow-sm
+                    h4 3. Resumen (límite de 250 palabras)
+                    p Por favor si puede ingrese ambos resúmenes en inglés y español, de lo contrario los traduciremos para usted.
+                    h5 Inglés
+                    textarea.wordLimit.inputText.form-control(name='englishAbstract', style="width: 100% ")
+                    div.wordLimitDisplay
+                    br
+                    h5 Español
+                    textarea.wordLimit.inputText.form-control(name='spanishAbstract', style="width: 100% ")
+                    div.wordLimitDisplay
+
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 4. Indique sus preferencias para los tres formatos de presentación
+                        p (15 minutos de presentación, 5 minutos de presentación y póster)
+                    div.fullwidth
+                        .formInfo
+                            p 1ª Elección
+                        .rightInput
+                            select.form-control(name='presentationChoice1')
+                                option(value="", disabled, selected) Seleccionar
+                                option  15 minutos de presentación 
+                                option  5 minutos de presentación 
+                                option  póster 
+                                option  Sin preferencias 
+
+                    div.fullwidth
+                        .formInfo
+                            p 2ª Elección
+                        .rightInput
+                            select.form-control(name='presentationChoice2')
+                                option(value="", disabled, selected) Seleccionar
+                                option  15 minutos de presentación 
+                                option  5 minutos de presentación 
+                                option  póster 
+                                option  Sin preferencias 
+                    div.fullwidth
+                        .formInfo
+                            p 3ª Elección
+                            br
+                            span.helpText  
+                            br
+                        .rightInput
+                            select.form-control(name='presentationChoice3')
+                                option(value="", disabled, selected) Seleccionar
+                                option  15 minutos de presentación 
+                                option  5 minutos de presentación 
+                                option  póster 
+                                option  Sin preferencias 
+                .form-group.shadow-sm
+                    div.fullwidth
+                        h4 5. Por favor, indique sus 4 opciones principales de áreas temáticas a las que su presentación se adapta mejor.
+                    div.fullwidth
+                        .formInfo
+                            p 1ª Elección
+                        .rightInput
+                            select.form-control#ListBox145(name='topicChoice1')
+                                option(value="", disabled, selected) Seleccionar
+                                option(value='Hábitat') Hábitat
+                                option(value='Conectividad') Conectividad
+                                option(value='Biología reproductiva') Biología reproductiva
+                                option(value='Clima') Clima
+                                option(value='Conservación') Conservación
+                                option(value='Migración') Migración
+                                option(value='Parámetros poblacionales') Parámetros poblacionales
+                                option(value='Heamatopus palliatus') Heamatopus palliatus
+                                option(value='Género Calidris ') Género Calidris 
+                                option(value='Depredación') Depredación
+                                option(value='Abundancia, ocupación, tendencias.') Abundancia, ocupación, tendencias.
+                                option(value='Hábitos alimentarios / alimentación') Hábitos alimentarios / alimentación
+                    div.fullwidth
+                        .formInfo
+                            p 2ª Elección
+                        .rightInput
+                            select.form-control#ListBox146(name='topicChoice2')
+                                option(value="", disabled, selected) Seleccionar
+                                option(value='Hábitat') Hábitat
+                                option(value='Conectividad') Conectividad
+                                option(value='Biología reproductiva') Biología reproductiva
+                                option(value='Clima') Clima
+                                option(value='Conservación') Conservación
+                                option(value='Migración') Migración
+                                option(value='Parámetros poblacionales') Parámetros poblacionales
+                                option(value='Heamatopus palliatus') Heamatopus palliatus
+                                option(value='Género Calidris ') Género Calidris 
+                                option(value='Depredación') Depredación
+                                option(value='Abundancia, ocupación, tendencias.') Abundancia, ocupación, tendencias.
+                                option(value='Hábitos alimentarios / alimentación') Hábitos alimentarios / alimentación
+                    div.fullwidth
+                        .formInfo
+                            p 3ª Elección
+                        .rightInput
+                            select.form-control#ListBox147(name='topicChoice3')
+                                option(value="", disabled, selected) Seleccionar
+                                option(value='Hábitat') Hábitat
+                                option(value='Conectividad') Conectividad
+                                option(value='Biología reproductiva') Biología reproductiva
+                                option(value='Clima') Clima
+                                option(value='Conservación') Conservación
+                                option(value='Migración') Migración
+                                option(value='Parámetros poblacionales') Parámetros poblacionales
+                                option(value='Heamatopus palliatus') Heamatopus palliatus
+                                option(value='Género Calidris ') Género Calidris 
+                                option(value='Depredación') Depredación
+                                option(value='Abundancia, ocupación, tendencias.') Abundancia, ocupación, tendencias.
+                                option(value='Hábitos alimentarios / alimentación') Hábitos alimentarios / alimentación
+                    div.fullwidth
+                        .formInfo
+                            p 4ª Elección
+                        .rightInput
+                            select.form-control#ListBox148(name='topicChoice4')
+                                option(value="", disabled, selected) Seleccionar
+                                option(value='Hábitat') Hábitat
+                                option(value='Conectividad') Conectividad
+                                option(value='Biología reproductiva') Biología reproductiva
+                                option(value='Clima') Clima
+                                option(value='Conservación') Conservación
+                                option(value='Migración') Migración
+                                option(value='Parámetros poblacionales') Parámetros poblacionales
+                                option(value='Heamatopus palliatus') Heamatopus palliatus
+                                option(value='Género Calidris ') Género Calidris 
+                                option(value='Depredación') Depredación
+                                option(value='Abundancia, ocupación, tendencias.') Abundancia, ocupación, tendencias.
+                                option(value='Hábitos alimentarios / alimentación') Hábitos alimentarios / alimentación
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 6. Por favor indique el grado estudiantil del autor que hará la presentación.
+                    .rightInput
+                        select.form-control(name='studentStatus')
+                            option(value="", disabled, selected) Seleccionar
+                            option  Pre-universitario
+                            option  Estudiante de pregrado 
+                            option  Estudiante de maestría
+                            option  Estudiante de doctorado
+                            option  Postdoc
+                            option  Individuo entre grados en búsqueda de programas de estudio de postgrado
+                            option  El autor que hará la presentación no es estudiante o un postdoc
+                
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 7. Si el presentador es un estudiante y el resumen es aceptado, ¿le gustaría al estudiante ser considerado para el Premio de Presentación para Estudiantes?
+                        p Para ser considerado, debe ser el autor principal y el presentador del documento, que incluye a los graduados que han completado su graduación desde el 1 de mayo de 2018 y personas en búsqueda de programas de estudios de postgrado.
+                    .rightInput
+                        select.form-control(name='presentationAward')
+                            option(value="", disabled, selected) Seleccionar
+                            option  Sí 
+                            option  No 
+                
+                .form-group.shadow-sm
+                    .formInfo
+                        h4 8. ¿Le gustaría al presentador ser considerado para un premio de viaje estudiantil o un premio de viaje profesional para Latinoamericanos?
+                        p Para ser considerado, debe presentar una charla o un póster, y ser un estudiante, que incluye graduados que han completado su graduación desde el 1 de mayo de 2018 y personas en búsqueda de programas de estudio de postgrado, o ser un profesional latinoamericano.
+                    .rightInput
+                        select.form-control(name='travelAward')
+                            option(value="", disabled, selected) Seleccionar
+                            option  Sí 
+                            option  No 
+                .form-group.shadow-sm
+                    h4 9.  Por favor menciones si tiene alguna necesidad especial para su presentación
+                    p (ej. Requeriré asistencia en silla de ruedas).
+                    textarea#TextBox150.inputText.form-control(name='specialNeeds')
+                .form-group.shadow-sm
+                    h4 10. Por favor, ingrese cualquier nota al Comité del Programa Científico.
+                    textarea#TextBox152.inputText.form-control(name='notes')
+                .form-group.shadow-sm
+                    h4 11. ¿Está dispuesto a presidir su sesión o una sesión diferente?
+                    select.form-control(name='chairSession')
+                        option(value="", disabled, selected) Select
+                        option  Sí, solo mi sesión
+                        option  Si otra sesión solamente
+                        option  Sí, ya sea mi sesión o una sesión diferente
+                        option  No, no deseo presidir una sesión.
+                .form-group
+                    button(type="submit" class="btn btn-primary", style="float: right") Enviar
+
+
+script.
+
+    $( document ).ready(function() {
+
+    $('#addAuthorBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        $trNew = $trLast.clone();
+        $trNew.find('td:first').html(parseInt(prevnum) + 1);
+        $trLast.after($trNew);
+        $('#authorTable tr:last').find('input').val('');
+    });
+
+    $('#deleteAuthorBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#authorTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        if (prevnum != "1") {
+            $trLast = $('#authorTable tr:last').remove();
+        }
+        
+    });
+
+    var wordCount = function( val ){
+        var wom = val.match(/\S+/g);
+        return {
+            charactersNoSpaces : val.replace(/\s+/g, '').length,
+            characters         : val.length,
+            words              : wom ? wom.length : 0,
+            lines              : val.split(/\r*\n/).length
+        };
+    }
+
+    $('.wordLimit').on('keydown change', function () {
+
+        var v = wordCount( $(this).val() );
+
+        if (v.words > 250) {
+          var trimmed = $(this).val().split(/\s+/, 250).join(" ");
+          $(this).val(trimmed + " ");
+          v.words = 250;
+        }
+
+        $(this).next('.wordLimitDisplay').html("Words: "+ v.words);
+
+    });
+
+    $('.charLimit').on('keyup keydown change', function () {
+
+        $(this).val($(this).val().substring(0, 125));
+        var v = wordCount( $(this).val() );
+        $(this).next('.charLimitDisplay').html("Characters: "+ v.characters);
+
+    });
+
+    // Form Submission
+    $( "form" ).on( "submit", function( event ) {
+
+        event.preventDefault();
+
+        var main = {};
+        var formObj = ($( this ).serializeArray())
+        main['theForm'] = formObj;
+
+        var authors = [];
+        $('#authorTable tr:has(td)').map(function(i, v) {
+            var td =  $('td', this);
+            authors.push({
+                id: ++i,
+                fist: td.children().eq(0).val(),
+                middle: td.children().eq(1).val(),
+                last: td.children().eq(2).val(),
+                primary: td.children().eq(3).val(),
+                phone: td.children().eq(4).val(),
+                email: td.children().eq(5).val()
+            });           
+        });
+
+        main['authors'] = authors;
+
+        var json = JSON.stringify(main);
+        console.log(main);
+
+        $.ajax({ 
+           url: '/postSpanish',
+           type: 'POST',
+           contentType: "application/json",
+           data: json,
+           success: function(data){
+              console.log("success");
+              window.location.href = 'thanks_es';
+           },
+           error: function(jqXHR, textStatus, err){
+               alert('text status '+textStatus+', err '+err)
+           }
+        })
+
+
+     });
+    });

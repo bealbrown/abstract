@@ -20,7 +20,11 @@ html
         div#main-container
             center
                 h2(style="letter-spacing: 2px;") Abstract Submission Form
+                a(href='/es')
+                    h5 Por Español haz clic aqui
             br
+            
+
             h4 Welcome!  Please submit your abstract for the 8th Western Hemisphere Shorebird Group meeting, to be held in Panama City, Panama, October 24-28, 2019. Abstracts are due by 5 April 2019.
             p Please prepare your abstract title and text, and have the names of all the coauthors ready.  You will not be able to save your work and return, so should plan to complete your submission in one session. 
             br
@@ -492,6 +496,7 @@ script.
            data: json,
            success: function(data){
               console.log("success");
+              window.location.href = 'thanks_en';
            },
            error: function(jqXHR, textStatus, err){
                alert('text status '+textStatus+', err '+err)
