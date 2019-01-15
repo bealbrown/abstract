@@ -44,12 +44,13 @@ app.post('/postform', function(req, res) {
     var names = [];
     var values = [];
 
+    var whichDB = req.body.whichDB;
     var theForm = req.body.theForm;
+
 
     for (row in theForm) {
         names.push(connection.escapeId(theForm[row].name));
         var value = connection.escape(theForm[row].value);
-
         if (value == '') {
             values.push('NULL');
         } else {
@@ -63,7 +64,7 @@ app.post('/postform', function(req, res) {
     names.push("authors");
     values.push(connection.escape(JSON.stringify(req.body.authors)));
 
-    connection.query('INSERT INTO abstract.mainEnglish (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, result) {
+    connection.query('INSERT INTO abstract.'+ whichDb + ' (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, result) {
         if (err) {
             console.log(err);
             return;
