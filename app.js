@@ -11,20 +11,6 @@ app.use(express.json({limit: '50mb'}));
 app.set('view engine', 'pug')
 
 
-var connection = mysql.createConnection({
-    host: '198.199.91.241',
-    user: 'ethan',
-    password: process.env.ABSPASS
-});
-
-connection.connect(function(err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-    console.log('connected as id ' + connection.threadId)
-});
-
 // -------- GET ROUTES -------- 
 app.get('/', function(req, res) {
     res.render('index.pug');
@@ -39,14 +25,34 @@ app.get('/symposium', function(req, res) {
 })
 
 // -------- POST ROUTES ---------
-app.post('/postform', function(req, res) {
+app.post('/postEnglish', function(req, res) {
+    writetoDB(req,res,"mainEnglish");
+});
+
+app.post('/postSpanish', function(req, res) {
+    writetoDB(req,res,"mainEnglish");
+});
+
+
+var writetoDB = function(req, res, whichDB) {
+
+    var connection = mysql.createConnection({
+        host: '198.199.91.241',
+        user: 'ethan',
+        password: process.env.ABSPASS
+    });
+
+    connection.connect(function(err) {
+        if (err) {
+            console.error('error connecting: ' + err.stack);
+            return;
+        }
+    });
 
     var names = [];
     var values = [];
 
-    var whichDB = req.body.whichDB;
     var theForm = req.body.theForm;
-
 
     for (row in theForm) {
         names.push(connection.escapeId(theForm[row].name));
@@ -57,9 +63,6 @@ app.post('/postform', function(req, res) {
             values.push(value);
         }
     }
-
-    // storing authors as json object. Perhaps not ideal, but will have to do post-processing on data anyway
-    // appears to handle all unicode characters fine and produce valid object notation, so easy later on...
 
     names.push("authors");
     values.push(connection.escape(JSON.stringify(req.body.authors)));
@@ -77,6 +80,13 @@ app.post('/postform', function(req, res) {
 
     res.redirect('/');
 
-});
+    connection.end(function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+    });
+
+}
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))

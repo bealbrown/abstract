@@ -481,13 +481,12 @@ script.
         });
 
         main['authors'] = authors;
-        main['whichDB'] = "mainEnglish";
 
         var json = JSON.stringify(main);
         console.log(main);
 
         $.ajax({ 
-           url: '/postform',
+           url: '/postEnglish',
            type: 'POST',
            contentType: "application/json",
            data: json,
