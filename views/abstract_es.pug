@@ -37,7 +37,7 @@ html
                         span#Label34
                     div.fullwidth
                         .formInfo
-                            h4 ¿Qué autor está presentando?
+                            h4 Nombre completo del autor presentador
                         .rightInput
                             input.inputText.form-control(type="text", name='presenter')
 
@@ -103,9 +103,8 @@ html
                         .rightInput
                             select.form-control(name='presentationChoice1')
                                 option(value="", disabled, selected) Seleccionar
-                                option  15 minutos de presentación 
-                                option  5 minutos de presentación 
-                                option  póster 
+                                option  20 minutos de presentación 
+                                option  Póster 
                                 option  Sin preferencias 
 
                     div.fullwidth
@@ -114,9 +113,8 @@ html
                         .rightInput
                             select.form-control(name='presentationChoice2')
                                 option(value="", disabled, selected) Seleccionar
-                                option  15 minutos de presentación 
-                                option  5 minutos de presentación 
-                                option  póster 
+                                option  20 minutos de presentación 
+                                option  Póster 
                                 option  Sin preferencias 
                     div.fullwidth
                         .formInfo
@@ -127,9 +125,8 @@ html
                         .rightInput
                             select.form-control(name='presentationChoice3')
                                 option(value="", disabled, selected) Seleccionar
-                                option  15 minutos de presentación 
-                                option  5 minutos de presentación 
-                                option  póster 
+                                option  20 minutos de presentación 
+                                option  Póster 
                                 option  Sin preferencias 
                 .form-group.shadow-sm
                     div.fullwidth
@@ -240,14 +237,26 @@ html
                             option  Sí 
                             option  No 
                 .form-group.shadow-sm
-                    h4 9.  Por favor menciones si tiene alguna necesidad especial para su presentación
+                    .formInfo
+                        h4 9. ¿Se presenta este resumen para un simposio específico? Si es así, ingrese aquí el nombre del simposio.
+                    .rightInput
+                        input.inputText.form-control(type="text", name='forsymposium')
+                    .formInfo
+                        h4 ¿Fue este resumen invitado por los organizadores del simposio?
+                    .rightInput
+                        select.form-control(name='forsymposium-byorganizers')
+                            option(value="", disabled, selected) Select
+                            option  Sí 
+                            option  No 
+                .form-group.shadow-sm
+                    h4 10.  Por favor menciones si tiene alguna necesidad especial para su presentación
                     p (ej. Requeriré asistencia en silla de ruedas).
                     textarea#TextBox150.inputText.form-control(name='specialNeeds')
                 .form-group.shadow-sm
-                    h4 10. Por favor, ingrese cualquier nota al Comité del Programa Científico.
+                    h4 11. Por favor, ingrese cualquier nota al Comité del Programa Científico.
                     textarea#TextBox152.inputText.form-control(name='notes')
                 .form-group.shadow-sm
-                    h4 11. ¿Está dispuesto a presidir su sesión o una sesión diferente?
+                    h4 12. ¿Está dispuesto a presidir su sesión o una sesión diferente?
                     select.form-control(name='chairSession')
                         option(value="", disabled, selected) Select
                         option  Sí, solo mi sesión

@@ -20,8 +20,13 @@ html
         div#main-container
             center
                 h2(style="letter-spacing: 2px;") Presentación de Propuestas de Simposios
+                a(href='/symposium')
+                    h5 For English Click Here
+
             br
             h4 ¡Bienvenido! Ingrese los datos en los campos correspondientes para enviar su propuesta de un Simposio en el marco de la 8ª reunión del Grupo de Aves Playas del Hemisferio Occidental en la Ciudad de Panamá, Panamá, del 24 al 28 de octubre de 2019.
+            br
+            h4 Las propuestas del simposio son por X.
             form
                 .form-group.shadow-sm
                     div.fullwidth
@@ -41,11 +46,11 @@ html
                         h4 Por favor ingrese los nombres y afiliaciones de los organizadores del Simposio:
                     .rightInput
                         span#Label34
-                    div.fullwidth
-                        .formInfo
-                            h4 ¿Qué autor está presentando?
-                        .rightInput
-                            input.inputText.form-control(type="text", name='presenterInput')
+                    //- div.fullwidth
+                    //-     .formInfo
+                    //-         h4 ¿Qué autor está presentando?
+                    //-     .rightInput
+                    //-         input.inputText.form-control(type="text", name='presenterInput')
 
 
                     table(id="authorTable")

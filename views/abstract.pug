@@ -39,7 +39,7 @@ html
                         span#Label34
                     div.fullwidth
                         .formInfo
-                            h4 Which author is presenting? 
+                            h4 Full name of presenting author
                         .rightInput
                             input.inputText.form-control(type="text", name='presenter')
 
@@ -85,7 +85,7 @@ html
                     div.charLimitDisplay
 
                 .form-group.shadow-sm
-                    h4 7. Abstract (250-word limit)
+                    h4 3. Abstract (250-word limit)
                     p Please enter both English and Spanish abstracts if you can; otherwise we will translate them for you.
                     h5 English
                     textarea.wordLimit.inputText.form-control(name='englishAbstract', style="width: 100% ")
@@ -97,7 +97,7 @@ html
 
                 .form-group.shadow-sm
                     div.fullwidth
-                        h4 3. Please indicate your preferences for the three presentation formats
+                        h4 4. Please indicate your preferences for the three presentation formats
                         p (15 min talk, 5 min lightning, and poster)
                     div.fullwidth
                         .formInfo
@@ -105,8 +105,7 @@ html
                         .rightInput
                             select.form-control(name='presentationChoice1')
                                 option(value="", disabled, selected) Select
-                                option  15 minute talk 
-                                option  5 minute lightning 
+                                option  20 minute presentation 
                                 option  Poster 
                                 option  No preference 
 
@@ -116,8 +115,7 @@ html
                         .rightInput
                             select.form-control(name='presentationChoice2')
                                 option(value="", disabled, selected) Select
-                                option  15 minute talk 
-                                option  5 minute lightning 
+                                option  20 minute presentation
                                 option  Poster 
                                 option  No preference 
                                 option  I do not want another format 
@@ -130,14 +128,13 @@ html
                         .rightInput
                             select.form-control(name='presentationChoice3')
                                 option(value="", disabled, selected) Select
-                                option  15 minute talk 
-                                option  5 minute lightning 
+                                option  20 minute presentation
                                 option  Poster 
                                 option  No preference 
                                 option  I do not want another format 
                 .form-group.shadow-sm
                     div.fullwidth
-                        h4 4. Please indicate your top 4 choices of topical areas in which your presentation best fits.
+                        h4 5. Please indicate your top 4 choices of topical areas in which your presentation best fits.
                         //- div.blocktext
                         //-     p
                         //-     | Possible subject areas include the following: Abundance, occupancy, trends; Annual cycle; Behavior; Biogeography; Birds & agriculture; Breeding biology; Breeding Bird Survey (BBS); Brood parasitism; Citizen science/science communication; Climate; Community ecology; Conservation; Development & growth; Diseases/parasites; Ecosystems; Ecotoxicology; Emerging tools; Endocrinology & hormones; Evolution; Evolutionary ecology; Foraging/food habits; General Ecology; Genomics; Habitat change/relationships; Human dimensions/coupled systems; Landscape Ecology; Life history; Management/policy; Mating systems; Metabolic ecology; Migration & Stopover; Models and methods; Molecular ecology; Morphology/molt; Movements/dispersal; Parental care; Phylogenetics; Phylogeography; Physiology; Policy, outreach & education; Pollution/pesticides; Population biology/dynamics; Sexual selection; Songs/vocalizations; Systematics/taxonomy; Tropical ecology; Urban ecology
@@ -355,7 +352,7 @@ html
                                 option(value='Urban ecology') Urban ecology
                 .form-group.shadow-sm
                     .formInfo
-                        h4 5. Please indicate the student status of the presenting author. 
+                        h4 6. Please indicate the student status of the presenting author. 
                     .rightInput
                         select.form-control(name='studentStatus')
                             option(value="", disabled, selected) Select
@@ -369,7 +366,7 @@ html
                 
                 .form-group.shadow-sm
                     .formInfo
-                        h4 6. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
+                        h4 7. If the presenter is a student and the abstract is accepted, would the student like to be considered for a Student Presentation Award? 
                         p To be considered, you must be the primary author and presenter of the paper which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs. 
                     .rightInput
                         select.form-control(name='presentationAward')
@@ -379,7 +376,7 @@ html
                 
                 .form-group.shadow-sm
                     .formInfo
-                        h4 7. Would the presenter like to be considered for a student travel award, or a Latin American professional travel award?
+                        h4 8. Would the presenter like to be considered for a student travel award, or a Latin American professional travel award?
                         p To be considered, you must present a talk or a poster, and be a student, which includes graduates who have completed a degree since 1 May 2018 and individuals between degree-seeking programs, or a Latin American professional.
                     .rightInput
                         select.form-control(name='travelAward')
@@ -387,14 +384,27 @@ html
                             option  Yes 
                             option  No 
                 .form-group.shadow-sm
-                    h4 8. Please note if you have any special needs for your presentation
+                    .formInfo
+                        h4 9. Is this abstract submitted for a specific symposium?  If so please enter the name of the symposium here. 
+                    .rightInput
+                        input.inputText.form-control(type="text", name='forsymposium')
+                    .formInfo
+                        h4 Was this abstract invited by the organizers of the symposium?
+                    .rightInput
+                        select.form-control(name='forsymposium-byorganizers')
+                            option(value="", disabled, selected) Select
+                            option  Yes 
+                            option  No 
+
+                .form-group.shadow-sm
+                    h4 10. Please note if you have any special needs for your presentation
                     p (e.g., I will require wheelchair assistance).
                     textarea#TextBox150.inputText.form-control(name='specialNeeds')
                 .form-group.shadow-sm
-                    h4 9. Please enter any notes to the Scientific Program Committee.
+                    h4 11. Please enter any notes to the Scientific Program Committee.
                     textarea#TextBox152.inputText.form-control(name='notes')
                 .form-group.shadow-sm
-                    h4 10. Are you willing to chair your session or a different session? 
+                    h4 12. Are you willing to chair your session or a different session? 
                     select.form-control(name='chairSession')
                         option(value="", disabled, selected) Select
                         option  Yes, my session only 
