@@ -316,9 +316,7 @@ script.
 
         event.preventDefault();
 
-        var main = {};
         var formObj = ($( this ).serializeArray())
-        main['theForm'] = formObj;
 
         var authors = [];
         $('#authorTable tr:has(td)').map(function(i, v) {
@@ -334,10 +332,11 @@ script.
             });           
         });
 
-        main['authors'] = authors;
+        formObj.push(
+            {name:"authors", value:JSON.stringify(authors)}
+        )
 
-        var json = JSON.stringify(main);
-        console.log(main);
+        var json = JSON.stringify(formObj);
 
         $.ajax({ 
            url: '/postSpanish',

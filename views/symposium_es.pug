@@ -44,8 +44,8 @@ html
                 .form-group.shadow-sm
                     div.fullwidth
                         h4 Por favor ingrese los nombres y afiliaciones de los organizadores del Simposio:
-                    .rightInput
-                        span#Label34
+                    //- .rightInput
+                    //-     span#Label34
                     //- div.fullwidth
                     //-     .formInfo
                     //-         h4 ¿Qué autor está presentando?
@@ -95,7 +95,7 @@ html
                     div.fullwidth
                         h4 Indique si está interesado en planificar un Simposio de medio día (ocho espacios de presentación) o de un día completo (16 espacios de presentación):
                         .rightInput
-                            select.form-control(name='RadComboBox139_DropDown')
+                            select.form-control(name='halforfullday')
                                 option(value="", disabled, selected) Seleccionar
                                 option  Medio día
                                 option  Día completo
@@ -120,7 +120,7 @@ html
                         button(id="deleteTopicButton", class="btn btn-secondary") Quitar fila
                 .form-group.shadow-sm
                     h4 Por favor introduzca cualquier nota al Comité Científico: 
-                    textarea#TextBox152.inputText.form-control(name='TextBox152')
+                    textarea.inputText.form-control(name='notestocommittee')
                 .form-group
                     button(type="submit" class="btn btn-primary", style="float: right") Enviar
 
@@ -192,24 +192,59 @@ script.
 
     // Form Submission
     $( "form" ).on( "submit", function( event ) {
+        
         event.preventDefault();
-        var formdata = $( this ).serialize();
+
+        var formObj = ($( this ).serializeArray());
+
+        var authors = [];
+        $('#authorTable tr:has(td)').map(function(i, v) {
+            var td =  $('td', this);
+            authors.push({
+                id: ++i,
+                fist: td.children().eq(0).val(),
+                middle: td.children().eq(1).val(),
+                last: td.children().eq(2).val(),
+                primary: td.children().eq(3).val(),
+                phone: td.children().eq(4).val(),
+                email: td.children().eq(5).val()
+            });           
+        });
+
+        var topics = [];
+        $('#topicTable tr:has(td)').map(function(i, v) {
+            var td =  $('td', this);
+            topics.push({
+                id: ++i,
+                name: td.children().eq(0).val(),
+                topic: td.children().eq(1).val(),
+            });           
+        });
+
+
+        formObj.push(
+            {name:"authors", value:JSON.stringify(authors)},
+            {name:"topics", value:JSON.stringify(topics)},
+        )
+
+        console.log(formObj);
+        var json = JSON.stringify(formObj);
 
 
         $.ajax({ 
-           url: '/postform',
+           url: '/postSymposiumSpanish',
            type: 'POST',
-           cache: false, 
-           data: formdata, 
+           contentType: "application/json",
+           data: json,
            success: function(data){
-              alert('Success!')
+              console.log("success");
+              window.location.href = 'thanks_es';
            },
            error: function(jqXHR, textStatus, err){
                alert('text status '+textStatus+', err '+err)
            }
         })
 
-        console.log( $( this ).serialize() );
+    });
 
-     });
     });

@@ -21,7 +21,7 @@ app.get('/es', function(req, res) {
 })
 
 app.get('/thanks_en', function(req, res) {
-    res.render('thanks.pug');
+    res.render('thanks_en.pug');
 })
 
 app.get('/thanks_es', function(req, res) {
@@ -48,6 +48,16 @@ app.post('/postSpanish', function(req, res) {
     res.redirect("/thanks_es");
 });
 
+app.post('/postSymposium', function(req, res) {
+    writetoDB(req,res,"Symposium");
+    res.redirect("/thanks_en");
+});
+
+app.post('/postSymposiumSpanish', function(req, res) {
+    writetoDB(req,res,"SymposiumSpanish");
+    res.redirect("/thanks_es");
+});
+
 
 var writetoDB = function(req, res, whichDB) {
 
@@ -67,7 +77,7 @@ var writetoDB = function(req, res, whichDB) {
     var names = [];
     var values = [];
 
-    var theForm = req.body.theForm;
+    var theForm = req.body;
 
     for (row in theForm) {
         names.push(connection.escapeId(theForm[row].name));
@@ -79,9 +89,6 @@ var writetoDB = function(req, res, whichDB) {
         }
     }
 
-    names.push("authors");
-    values.push(connection.escape(JSON.stringify(req.body.authors)));
-
     connection.query('INSERT INTO abstract.'+ whichDB + ' (' + names.join(', ') + ') VALUES (' + values.join(', ') + ')', function(err, result) {
         if (err) {
             console.log(err);
@@ -90,8 +97,6 @@ var writetoDB = function(req, res, whichDB) {
             console.log(result.insertId + " " + whichDB);
         }
     });
-
-    // console.log(values);    
 
     connection.end(function(err) {
         if (err) {
