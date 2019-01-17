@@ -116,8 +116,8 @@ html
                             td 
                                 input.inputText.charLimit.form-control(type='text', style="width: 500px;")
                     div.authorBtnBox
-                        button(id="addTopicButton", class="btn btn-primary") Add Topic
-                        button(id="deleteTopicButton", class="btn btn-secondary") Delete Topic
+                        button(id="addTopicBtn", class="btn btn-primary") Add Topic
+                        button(id="deleteTopicBtn", class="btn btn-secondary") Delete Topic
                 .form-group.shadow-sm
                     h4 Please enter any notes to the Scientific Committee
                     textarea.inputText.form-control(name='notestocommittee')
@@ -139,7 +139,7 @@ script.
         $('#authorTable tr:last').find('input').val('');
     });
 
-    $('#addTopicButton').on('click', function(event) {
+    $('#addTopicBtn').on('click', function(event) {
         event.preventDefault();
         $trLast = $('#topicTable tr:last');
         var prevnum = $trLast.find('td:first').html();
@@ -155,6 +155,15 @@ script.
         var prevnum = $trLast.find('td:first').html();
         if (prevnum != "1") {
             $trLast = $('#authorTable tr:last').remove();
+        }
+    });
+
+    $('#deleteTopicBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#topicTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        if (prevnum != "1") {
+            $trLast = $('#topicTable tr:last').remove();
         }
     });
 

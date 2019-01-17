@@ -24,14 +24,14 @@ html
                     h5 For English Click Here
 
             br
-            h4 ¡Bienvenido! Ingrese los datos en los campos correspondientes para enviar su propuesta de un Simposio en el marco de la 8ª reunión del Grupo de Aves Playas del Hemisferio Occidental en la Ciudad de Panamá, Panamá, del 24 al 28 de octubre de 2019.
+            h4 ¡Bienvenido! Ingrese los datos en los campos correspondientes para enviar su propuesta de un Simposio en el marco de la 8<sup>va</sup> Reunión del Grupo de Aves Playeras del Hemisferio Occidental en la Ciudad de Panamá, Panamá, del 24 al 28 de octubre de 2019.
             br
             h4 Las propuestas del simposio deben presentarse antes del 15 de marzo de 2019.
             form
                 .form-group.shadow-sm
                     div.fullwidth
                         h4 Por favor ingrese el título del Simposio propuesto:
-                        p (150 character Limit)
+                        p (Límite de 150 caracteres)
                     br
                     h5 Inglés
                     input.charLimit.inputText.form-control(type="text", name='englishTitleInput')
@@ -81,7 +81,7 @@ html
                         button(id="deleteAuthorBtn", class="btn btn-secondary") Borrar Autor
 
                 .form-group.shadow-sm
-                    h4 3.  Ingrese una breve descripción del Simposio propuesto en 250 palabras o menos:
+                    h4 Ingrese una breve descripción del Simposio propuesto en 250 palabras o menos:
                     br
                     h5 Inglés
                     textarea.wordLimit.inputText.form-control(name='englishAbstractInput', style="width: 100% ")
@@ -102,7 +102,7 @@ html
                 .form-group.shadow-sm
                     div.fullwidth
                         h4 Por favor ingrese los nombres y temas de presentación de cualquier participante del Simposio que tenga en mente 
-                        p (no necesita identificar a todos los presentadores, solo aquellos que ya conoce serán invitados):
+                        p (No necesita identificar a todos los presentadores, solo aquellos que ya conoce serán invitados):
 
                     table(id="topicTable")
                         tr
@@ -116,8 +116,8 @@ html
                             td 
                                 input.inputText.charLimit.form-control(type='text', style="width: 500px;")
                     div.authorBtnBox
-                        button(id="addTopicButton", class="btn btn-primary") Añadir fila
-                        button(id="deleteTopicButton", class="btn btn-secondary") Quitar fila
+                        button(id="addTopicBtn", class="btn btn-primary") Añadir fila
+                        button(id="deleteTopicBtn", class="btn btn-secondary") Quitar fila
                 .form-group.shadow-sm
                     h4 Por favor introduzca cualquier nota al Comité Científico: 
                     textarea.inputText.form-control(name='notestocommittee')
@@ -139,7 +139,7 @@ script.
         $('#authorTable tr:last').find('input').val('');
     });
 
-    $('#addTopicButton').on('click', function(event) {
+    $('#addTopicBtn').on('click', function(event) {
         event.preventDefault();
         $trLast = $('#topicTable tr:last');
         var prevnum = $trLast.find('td:first').html();
@@ -155,6 +155,15 @@ script.
         var prevnum = $trLast.find('td:first').html();
         if (prevnum != "1") {
             $trLast = $('#authorTable tr:last').remove();
+        }
+    });
+
+    $('#deleteTopicBtn').on('click', function(event) {
+        event.preventDefault();
+        $trLast = $('#topicTable tr:last');
+        var prevnum = $trLast.find('td:first').html();
+        if (prevnum != "1") {
+            $trLast = $('#topicTable tr:last').remove();
         }
     });
 
