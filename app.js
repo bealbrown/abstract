@@ -62,7 +62,7 @@ app.post('/postSymposiumSpanish', function(req, res) {
 var writetoDB = function(req, res, whichDB) {
 
     var connection = mysql.createConnection({
-        host: '198.199.91.241',
+        host: 'localhost',
         user: 'ethan',
         password: process.env.ABSPASS
     });
