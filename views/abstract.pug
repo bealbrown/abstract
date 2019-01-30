@@ -34,15 +34,7 @@ html
                         h4 1. Enter the names and contact info of the authors of this presentation.
                         div.blocktext
                             p For all authors, please provide their name as it should appear in the conference program and abstract book. 
-                            br
-                    .rightInput
-                        span#Label34
-                    div.fullwidth
-                        .formInfo
-                            h4 Full name of presenting author
-                        .rightInput
-                            input.inputText.form-control(type="text", name='presenter')
-
+                            p Please indicate the author who will be presenting by checking the box on their row.
 
                     table(id="authorTable")
                         tr
@@ -69,7 +61,7 @@ html
                             td
                                 input.authorInput.inputText(type='text')
                             td
-                                input(type="checkbox", style="width:20px;")
+                                input.presentercheck(type="checkbox", style="width:70px;")
 
                     div.authorBtnBox
                         button(id="addAuthorBtn", class="btn btn-primary") Add Author
@@ -386,6 +378,15 @@ script.
         $trNew.find('td:first').html(parseInt(prevnum) + 1);
         $trLast.after($trNew);
         $('#authorTable tr:last').find('input').val('');
+        $('#authorTable tr:last').find('.presentercheck').prop('checked', false);
+
+        $(".presentercheck").change(function() {
+            var checked = $(this).is(':checked');
+            $(".presentercheck").prop('checked',false);
+            if(checked) {
+                $(this).prop('checked',true);
+            }
+        });
     });
 
     $('#deleteAuthorBtn').on('click', function(event) {
@@ -430,6 +431,14 @@ script.
 
     });
 
+    $(".presentercheck").change(function() {
+        var checked = $(this).is(':checked');
+        $(".presentercheck").prop('checked',false);
+        if(checked) {
+            $(this).prop('checked',true);
+        }
+    });
+
     // Form Submission
     $( "form" ).on( "submit", function( event ) {
 
@@ -447,7 +456,8 @@ script.
                 last: td.children().eq(2).val(),
                 primary: td.children().eq(3).val(),
                 phone: td.children().eq(4).val(),
-                email: td.children().eq(5).val()
+                email: td.children().eq(5).val(),
+                presenter: td.children().eq(6).val()
             });           
         });
 

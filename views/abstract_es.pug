@@ -32,16 +32,8 @@ html
                         h4 1. Ingrese los nombres y la información de contacto de los autores de esta presentación.
                         div.blocktext
                             p Para todos los autores, indique el nombre como debe aparecer en el programa de la Reunión y en el libro de resúmenes.
-                            br
-                    .rightInput
-                        span#Label34
-                    div.fullwidth
-                        .formInfo
-                            h4 Nombre completo del autor presentador
-                        .rightInput
-                            input.inputText.form-control(type="text", name='presenter')
-
-
+                            p Por favor indique el autor que presentará marcando la casilla en su fila.
+                    
                     table(id="authorTable")
                         tr
                             th(style="width: 20px;") #
@@ -51,6 +43,7 @@ html
                             th Institución
                             th Teléfono
                             th e-mail
+                            th Presentador
                         tr
                             td(style="font-size: 16px") 1
                             td 
@@ -65,6 +58,9 @@ html
                                 input.authorInput.inputText(type='text')
                             td
                                 input.authorInput.inputText(type='text')
+                            td
+                                input.presentercheck(type="checkbox", style="width:70px;")
+
                     div.authorBtnBox
                         button(id="addAuthorBtn", class="btn btn-primary") Añadir Autor
                         button(id="deleteAuthorBtn", class="btn btn-secondary") Borrar Autor
@@ -269,6 +265,15 @@ script.
         $trNew.find('td:first').html(parseInt(prevnum) + 1);
         $trLast.after($trNew);
         $('#authorTable tr:last').find('input').val('');
+        $('#authorTable tr:last').find('.presentercheck').prop('checked', false);
+
+        $(".presentercheck").change(function() {
+            var checked = $(this).is(':checked');
+            $(".presentercheck").prop('checked',false);
+            if(checked) {
+                $(this).prop('checked',true);
+            }
+        });
     });
 
     $('#deleteAuthorBtn').on('click', function(event) {
@@ -313,6 +318,14 @@ script.
 
     });
 
+    $(".presentercheck").change(function() {
+        var checked = $(this).is(':checked');
+        $(".presentercheck").prop('checked',false);
+        if(checked) {
+            $(this).prop('checked',true);
+        }
+    });
+
     // Form Submission
     $( "form" ).on( "submit", function( event ) {
 
@@ -330,7 +343,8 @@ script.
                 last: td.children().eq(2).val(),
                 primary: td.children().eq(3).val(),
                 phone: td.children().eq(4).val(),
-                email: td.children().eq(5).val()
+                email: td.children().eq(5).val(),
+                presenter: td.children().eq(6).val()
             });           
         });
 
