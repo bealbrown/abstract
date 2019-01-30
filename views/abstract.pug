@@ -53,6 +53,7 @@ html
                             th Primary Institution
                             th Phone
                             th Email
+                            th Presenter
                         tr
                             td(style="font-size: 16px") 1
                             td 
@@ -67,6 +68,9 @@ html
                                 input.authorInput.inputText(type='text')
                             td
                                 input.authorInput.inputText(type='text')
+                            td
+                                input(type="checkbox", style="width:20px;")
+
                     div.authorBtnBox
                         button(id="addAuthorBtn", class="btn btn-primary") Add Author
                         button(id="deleteAuthorBtn", class="btn btn-secondary") Delete Author
@@ -74,7 +78,7 @@ html
                     div.fullwidth
                         h4 2. Title of presentation (125-character limit)
                         p Please enter the title as it should appear in the program and abstract book. Titles may not exceed 125 characters. 
-                        p Please enter both English and Spanish titles if you can; otherwise we will translate them for you. If you wish to submit an abstract in a language other than Spanish or English, please email the Scientific Program Committee chair, Stephen Brown, at sbrown@manomet.org.
+                        p Please enter both English and Spanish titles and abstracts if you can; otherwise we will translate them for you and ask you to pay an additional $25US when you register.  If you do your own translation, please do not use Google Translate, but have a bilingual person translate for you to ensure accuracy.
                     br
                     h5 English
                     input.charLimit.inputText.form-control(type="text", name='englishTitle')
@@ -86,7 +90,7 @@ html
 
                 .form-group.shadow-sm
                     h4 3. Abstract (250-word limit)
-                    p Please enter both English and Spanish abstracts if you can; otherwise we will translate them for you.
+                    p Please enter both English and Spanish abstracts if you can; otherwise we will translate them and charge you as described above.
                     h5 English
                     textarea.wordLimit.inputText.form-control(name='englishAbstract', style="width: 100% ")
                     div.wordLimitDisplay
@@ -134,7 +138,7 @@ html
                                 option(value='Annual cycle') Annual cycle
                                 option(value='Behavior') Behavior
                                 option(value='Biogeography') Biogeography
-                                option(value='Birds & agriculture') Shorebirds & agriculture
+                                option(value='Birds & agriculture') Shorebirds & productive systems
                                 option(value='Breeding biology') Breeding biology
                                 option(value='Citizen science/science communication') Citizen science/science communication
                                 option(value='Climate') Climate
@@ -179,7 +183,7 @@ html
                                 option(value='Annual cycle') Annual cycle
                                 option(value='Behavior') Behavior
                                 option(value='Biogeography') Biogeography
-                                option(value='Birds & agriculture') Shorebirds & agriculture
+                                option(value='Birds & agriculture') Shorebirds & productive systems
                                 option(value='Breeding biology') Breeding biology
                                 option(value='Citizen science/science communication') Citizen science/science communication
                                 option(value='Climate') Climate
@@ -224,7 +228,7 @@ html
                                 option(value='Annual cycle') Annual cycle
                                 option(value='Behavior') Behavior
                                 option(value='Biogeography') Biogeography
-                                option(value='Birds & agriculture') Shorebirds & agriculture
+                                option(value='Birds & agriculture') Shorebirds & productive systems
                                 option(value='Breeding biology') Breeding biology
                                 option(value='Citizen science/science communication') Citizen science/science communication
                                 option(value='Climate') Climate
@@ -269,7 +273,7 @@ html
                                 option(value='Annual cycle') Annual cycle
                                 option(value='Behavior') Behavior
                                 option(value='Biogeography') Biogeography
-                                option(value='Birds & agriculture') Shorebirds & agriculture
+                                option(value='Birds & agriculture') Shorebirds & productive systems
                                 option(value='Breeding biology') Breeding biology
                                 option(value='Citizen science/science communication') Citizen science/science communication
                                 option(value='Climate') Climate
