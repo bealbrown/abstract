@@ -327,47 +327,57 @@ script.
     });
 
     // Form Submission
-    $( "form" ).on( "submit", function( event ) {
+        $( "form" ).on( "submit", function( event ) {
 
         event.preventDefault();
 
-        var formObj = ($( this ).serializeArray())
+        var complete = 0;
+        if ($(".presentercheck:checked").length > 0) {
+            complete = 1;
+        } else {
+            alert("Please indicate which author will be presenting, Question #1.");
+        }
 
-        var authors = [];
-        $('#authorTable tr:has(td)').map(function(i, v) {
-            var td =  $('td', this);
-            authors.push({
-                id: ++i,
-                fist: td.children().eq(0).val(),
-                middle: td.children().eq(1).val(),
-                last: td.children().eq(2).val(),
-                primary: td.children().eq(3).val(),
-                phone: td.children().eq(4).val(),
-                email: td.children().eq(5).val(),
-                presenter: td.children().eq(6).val()
-            });           
-        });
+        if (complete) {
 
-        formObj.push(
-            {name:"authors", value:JSON.stringify(authors)}
-        )
+            var formObj = ($( this ).serializeArray());
 
-        var json = JSON.stringify(formObj);
+            var authors = [];
+            $('#authorTable tr:has(td)').map(function(i, v) {
+                var td =  $('td', this);
+                authors.push({
+                    id: ++i,
+                    fist: td.children().eq(0).val(),
+                    middle: td.children().eq(1).val(),
+                    last: td.children().eq(2).val(),
+                    primary: td.children().eq(3).val(),
+                    phone: td.children().eq(4).val(),
+                    email: td.children().eq(5).val(),
+                    presenter: td.children().eq(6).val()
+                });           
+            });
 
-        $.ajax({ 
-           url: '/postSpanish',
-           type: 'POST',
-           contentType: "application/json",
-           data: json,
-           success: function(data){
-              console.log("success");
-              window.location.href = 'thanks_es';
-           },
-           error: function(jqXHR, textStatus, err){
-               alert('text status '+textStatus+', err '+err)
-           }
-        })
+            formObj.push(
+                {name:"authors", value:JSON.stringify(authors)}
+            )
 
+            var json = JSON.stringify(formObj);
+
+            $.ajax({ 
+               url: '/postEnglish',
+               type: 'POST',
+               contentType: "application/json",
+               data: json,
+               success: function(data){
+                  console.log("success");
+                  window.location.href = 'thanks_en';
+               },
+               error: function(jqXHR, textStatus, err){
+                   alert('text status '+textStatus+', err '+err)
+               }
+            })
+
+            }
 
      });
     });
