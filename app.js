@@ -13,10 +13,14 @@ app.set('view engine', 'pug')
 
 // -------- GET ROUTES -------- 
 app.get('/', function(req, res) {
+    res.render('home.pug');
+})
+
+app.get('/abstract', function(req, res) {
     res.render('abstract.pug');
 })
 
-app.get('/es', function(req, res) {
+app.get('/abstract_es', function(req, res) {
     res.render('abstract_es.pug');
 })
 

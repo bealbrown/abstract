@@ -138,3 +138,34 @@ input[type=checkbox] {
   -o-transform: scale(2); /* Opera */
   padding: 10px;
 }
+
+.link-box {
+    width: 48%;
+    border-radius: 4px;
+    height: 150px;
+    background-color: #e8e8e8;
+    margin: 1%;
+    text-align: center;
+    padding: 54px;
+    float: left;
+    -webkit-box-shadow: 7px 5px 13px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 7px 5px 13px 0px rgba(0,0,0,0.15);
+    box-shadow: 7px 5px 13px 0px rgba(0, 0, 0, 0.15);
+}
+
+.link-container {
+    width: 60%;
+    margin: 0 auto;
+    margin-top:100px;
+}
+
+.link-box:hover {
+    background-color: #255a954a !important;
+}
+
+.text-box {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 23px;
+}
