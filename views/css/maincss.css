@@ -169,3 +169,9 @@ input[type=checkbox] {
     transform: translateY(-50%);
     font-size: 23px;
 }
+
+@media only screen and (max-width: 800px) {
+  .text-box {
+    font-size: 15px !important;
+  }
+}
