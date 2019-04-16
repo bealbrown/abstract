@@ -194,10 +194,10 @@ var exportDB = function(req,res,whichDB) {
                         return true;
                     }
 
-                    var idRow = authorSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"]]);
+                    var idRow = authorSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"],rowsObj[i]["englishTitle"]]);
                     idRow.fill = {type: 'pattern', pattern: 'darkVertical', fgColor: {argb: 'CACACA'}};
 
-                    var idRow = topicSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"]]);
+                    var idRow = topicSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"],rowsObj[i]["englishTitle"]]);
                     idRow.fill = {type: 'pattern', pattern: 'darkVertical', fgColor: {argb: 'CACACA'}};
 
 
