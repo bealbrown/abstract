@@ -42,6 +42,10 @@ app.get('/symposium_es', function(req, res) {
     res.render('symposium_es.pug');
 })
 
+
+
+// -------- EXPORT ROUTES ---------
+
 app.get('/' + process.env.EXPORTSTR, function(req, res) {
     res.render('export.pug', { exportstr: process.env.EXPORTSTR} );
 })
@@ -60,6 +64,14 @@ app.get('/' + process.env.EXPORTSTR + 'symposiumExport', function(req, res) {
 
 app.get('/' + process.env.EXPORTSTR + 'symposiumSpanishExport', function(req, res) {
     exportDB(req,res,'SymposiumSpanish');
+})
+
+app.get('/'  + process.env.EXPORTSTR + 'contacteng', function(req, res) {
+    contactinfo(req,res,"mainEnglish");
+})
+
+app.get('/'  + process.env.EXPORTSTR + 'contactesp', function(req, res) {
+    contactinfo(req,res,"mainSpanish");
 })
 
 
@@ -161,46 +173,74 @@ var exportDB = function(req,res,whichDB) {
                 var workbook = new Excel.Workbook();
                 var mainSheet = workbook.addWorksheet('Main');
                 var authorSheet = workbook.addWorksheet('Authors');
-                var topicSheet = workbook.addWorksheet('Topics');
+
+                if (whichDB == "Symposium" || whichDB == "SymposiumSpanish") {
+                    var topicSheet = workbook.addWorksheet('Topics');
+                }
+                
                 var rowsObj = JSON.parse(JSON.stringify(result));
 
-                colObj = rowsObj[0];
-                delete colObj.authors;
-                delete colObj.topics;
-                columnsData = Object.keys(colObj);                
+                columnsData = Object.keys(rowsObj[0]);  
+
+
+                // add in main author info to main table
+           
+                columnsData.splice(1,0,"Presenter Last Name");   
+                console.log(columnsData); 
+
+                for (var i = columnsData.length-1; i--;) {
+                    if ( columnsData[i] === 'authors' || columnsData[i] === 'topics') {
+                        columnsData.splice(i, 1);  
+                    } 
+                }
+
+                console.log(columnsData); 
+                // formatting of spreadsheet data display
                 mainSheet.addRow([whichDB]);     
                 mainSheet.addRow([""]);     
                 mainSheet.addRow(columnsData);     
 
                 // Main Sheet
 
+
                 for (i = 0; i < rowsObj.length; i++ ) {
+
+
+                    // --------------------- Initalize main Data Objects ---------------------
 
                     authorsJSON = rowsObj[i]["authors"];   
                     topicsJSON = rowsObj[i]["topics"]; 
 
+                    // if (i == 0 ) {
+                    //     console.log(rowsObj[i]);
+                    // }
+
                     delete rowsObj[i].authors;
                     delete rowsObj[i].topics;
 
-                    rowData = Object.values(rowsObj[i]);                
-                    mainSheet.addRow(rowData);
 
+                    // ------------------------------------------
                     function IsJsonString(str) {
                         try {
                             JSON.parse(str);
+                            // console.log(rowsObj[i]["id"], "success!");
                         } catch (e) {
+                            // console.log(i, rowsObj[i]["id"], e);
                             return false;
                         }
                         return true;
                     }
 
+                    // --------------------- Display formatting for Author, Topic sheets ---------------------
                     var idRow = authorSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"],rowsObj[i]["englishTitle"]]);
                     idRow.fill = {type: 'pattern', pattern: 'darkVertical', fgColor: {argb: 'CACACA'}};
 
-                    var idRow = topicSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"],rowsObj[i]["englishTitle"]]);
-                    idRow.fill = {type: 'pattern', pattern: 'darkVertical', fgColor: {argb: 'CACACA'}};
+                    if (whichDB == "Symposium" || whichDB == "SymposiumSpanish") {       
+                        var idRow = topicSheet.addRow([rowsObj[i]["id"],rowsObj[i]["englishTitleInput"],rowsObj[i]["englishTitle"]]);
+                        idRow.fill = {type: 'pattern', pattern: 'darkVertical', fgColor: {argb: 'CACACA'}};
+                    }
 
-
+                    // --------------------- Author Sheet data ---------------------
                     if (IsJsonString(authorsJSON)) {
 
                         authors = JSON.parse(authorsJSON);
@@ -210,36 +250,61 @@ var exportDB = function(req,res,whichDB) {
                         authorCols.unshift("");             
                         authorSheet.addRow(authorCols);    
 
+                        var presenterLast = "";
                         authors.forEach(function(author){
 
                             rowData = Object.values(author);    
                             rowData.unshift("");
-                            authorSheet.addRow(rowData);
 
+
+                            // Main presenter 
+                            if (rowData[8] == "on") {
+                                rowData[8] = rowData[4];
+                                presenterLast = rowData[4];
+
+                            }
+
+                            authorSheet.addRow(rowData);
+                            
                         });
 
                         authorSheet.addRow(null);
                     } 
 
-                    if (IsJsonString(topicsJSON)) {
+                    // --------------------- TOPIC SHEET INFO ---------------------
+                    if (whichDB == "Symposium" || whichDB == "SymposiumSpanish") {
 
-                        topics = JSON.parse(topicsJSON);
+                        if (IsJsonString(topicsJSON)) {
 
-                        topicCols = Object.keys(topics[0]);   
-                        topicCols.unshift("");             
-                        topicSheet.addRow(topicCols);    
+                            topics = JSON.parse(topicsJSON);
 
-                        topics.forEach(function(topic){
+                            topicCols = Object.keys(topics[0]);   
+                            topicCols.unshift("");             
+                            topicSheet.addRow(topicCols);    
 
-                            rowData = Object.values(topic);    
-                            rowData.unshift("");
-                            topicSheet.addRow(rowData);
+                            topics.forEach(function(topic){
 
-                        });
+                                rowData = Object.values(topic);    
+                                rowData.unshift("");
+                                topicSheet.addRow(rowData);
 
-                        topicSheet.addRow(null);
-                    } 
+                            });
+
+                            topicSheet.addRow(null);
+                        } 
+                    }
+
+                    // --------------------- MAIN SHEET INFO ---------------------
+
+                    rowData = Object.values(rowsObj[i]);    
+                    rowData.splice(1,0,presenterLast);            
+                    mainSheet.addRow(rowData);
+
+
+
                 }   
+
+            // --------------------- EXPORT XLSX ---------------------
 
             var fileName = whichDB + '.xlsx';
 
@@ -249,6 +314,88 @@ var exportDB = function(req,res,whichDB) {
             workbook.xlsx.write(res).then(function(){
                 res.end();
             });          
+
+
+            } catch (err) {
+              console.error(err);
+            }
+        }
+    });
+
+    connection.end(function(err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+    });
+}
+
+
+var contactinfo = function(req,res,whichDB) {
+
+    var connection = mysql.createConnection({
+        host: '198.199.91.241',
+        user: 'ethan',
+        password: process.env.ABSPASS
+    });
+
+    connection.connect(function(err) {
+        if (err) {
+            console.error('error connecting: ' + err.stack);
+            return;
+        }
+    });
+
+
+
+    connection.query('SELECT * FROM abstract.   ' + whichDB, function(err, result) {
+        if (err) {
+            console.log(err);
+            return;
+
+        } else {
+
+            try {
+
+                var workbook = new Excel.Workbook();
+                var mainSheet = workbook.addWorksheet('Main');
+
+
+                var rowsObj = JSON.parse(JSON.stringify(result));
+
+                mainSheet.addRow(["id", "englishTitle", "First Name", "Last Name", "Email"]);
+
+                for (i = 0; i < rowsObj.length; i++ ) {
+
+                    authorsJSON = rowsObj[i]["authors"];   
+                    authors = JSON.parse(authorsJSON);
+                   
+                    var firstname = "";
+                    var lastname = "";
+                    var email = "";
+
+                    authors.forEach(function(author){
+                        if (author['presenter'] == "on") {
+                            firstname = author['first'];
+                            lastname = author['last'];
+                            email = author['email'];
+                        }
+                    });
+
+                    newrow = [rowsObj[i]["id"], rowsObj[i]["englishTitle"], firstname, lastname, email];
+                    mainSheet.addRow(newrow);
+
+                }   
+
+
+                var fileName = whichDB + '.xlsx';
+
+                res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+                res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+
+                workbook.xlsx.write(res).then(function(){
+                    res.end();
+                });          
 
 
             } catch (err) {
