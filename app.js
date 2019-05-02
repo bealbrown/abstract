@@ -161,6 +161,7 @@ var exportDB = function(req,res,whichDB) {
         }
     });
 
+
     connection.query('SELECT * FROM abstract.   ' + whichDB, function(err, result) {
         if (err) {
             console.log(err);
@@ -186,7 +187,6 @@ var exportDB = function(req,res,whichDB) {
                 // add in main author info to main table
            
                 columnsData.splice(1,0,"Presenter Last Name");   
-                console.log(columnsData); 
 
                 for (var i = columnsData.length-1; i--;) {
                     if ( columnsData[i] === 'authors' || columnsData[i] === 'topics') {
@@ -194,10 +194,11 @@ var exportDB = function(req,res,whichDB) {
                     } 
                 }
 
-                console.log(columnsData); 
+
                 // formatting of spreadsheet data display
                 mainSheet.addRow([whichDB]);     
                 mainSheet.addRow([""]);     
+                columnsData.push("author1_first", "author1_middle", "author1_last", "author1_primary", "author1_phone", "author1_email", "author2_first", "author2_middle", "author2_last", "author2_primary", "author2_phone", "author2_email", "author3_first", "author3_middle", "author3_last", "author3_primary", "author3_phone", "author3_email", "author4_first", "author4_middle", "author4_last", "author4_primary", "author4_phone", "author4_email", "author5_first", "author5_middle", "author5_last", "author5_primary", "author5_phone", "author5_email", "author6_first", "author6_middle", "author6_last", "author6_primary", "author6_phone", "author6_email", "author7_first", "author7_middle", "author7_last", "author7_primary", "author7_phone", "author7_email", "author8_first", "author8_middle", "author8_last", "author8_primary", "author8_phone", "author8_email", "author9_first", "author9_middle", "author9_last", "author9_primary", "author9_phone", "author9_email", "author10_first", "author10_middle", "author10_last", "author10_primary", "author10_phone", "author10_email");
                 mainSheet.addRow(columnsData);     
 
                 // Main Sheet
@@ -211,13 +212,11 @@ var exportDB = function(req,res,whichDB) {
                     authorsJSON = rowsObj[i]["authors"];   
                     topicsJSON = rowsObj[i]["topics"]; 
 
-                    // if (i == 0 ) {
-                    //     console.log(rowsObj[i]);
-                    // }
-
                     delete rowsObj[i].authors;
                     delete rowsObj[i].topics;
 
+
+                    mainRowData = Object.values(rowsObj[i]);   
 
                     // ------------------------------------------
                     function IsJsonString(str) {
@@ -256,7 +255,7 @@ var exportDB = function(req,res,whichDB) {
                             rowData = Object.values(author);    
                             rowData.unshift("");
 
-
+                            mainRowData.push(author['first'], author['middle'], author['last'], author['primary'], author['phone'], author['email']);
                             // Main presenter 
                             if (rowData[8] == "on") {
                                 rowData[8] = rowData[4];
@@ -267,6 +266,7 @@ var exportDB = function(req,res,whichDB) {
                             authorSheet.addRow(rowData);
                             
                         });
+
 
                         authorSheet.addRow(null);
                     } 
@@ -296,9 +296,9 @@ var exportDB = function(req,res,whichDB) {
 
                     // --------------------- MAIN SHEET INFO ---------------------
 
-                    rowData = Object.values(rowsObj[i]);    
-                    rowData.splice(1,0,presenterLast);            
-                    mainSheet.addRow(rowData);
+                    
+                    mainRowData.splice(1,0,presenterLast);            
+                    mainSheet.addRow(mainRowData);
 
 
 
